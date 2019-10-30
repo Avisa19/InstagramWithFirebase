@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class SignupController: UIViewController {
     
     let signupView = SignupContainerView()
 
@@ -18,6 +18,10 @@ class ViewController: UIViewController {
         view.addSubview(signupView)
         signupView.fillSuperview()
         
+    }
+    
+    @objc fileprivate func handleSignup() {
+        print(123)
     }
 }
 
