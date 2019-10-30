@@ -28,7 +28,7 @@ class SignupContainerView: UIView {
         textField.placeholder = "Email"
         textField.font = UIFont.systemFont(ofSize: 14, weight: .heavy)
         textField.borderStyle = .roundedRect
-        textField.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        textField.backgroundColor = UIColor(white: 0, alpha: 0.03)
         return textField
     }()
     
@@ -37,7 +37,7 @@ class SignupContainerView: UIView {
         textField.placeholder = "Username"
         textField.font = UIFont.systemFont(ofSize: 14, weight: .heavy)
         textField.borderStyle = .roundedRect
-        textField.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        textField.backgroundColor = UIColor(white: 0, alpha: 0.03)
         return textField
     }()
     
@@ -46,7 +46,7 @@ class SignupContainerView: UIView {
         textField.placeholder = "Password"
         textField.font = UIFont.systemFont(ofSize: 14, weight: .heavy)
         textField.borderStyle = .roundedRect
-        textField.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        textField.backgroundColor = UIColor(white: 0, alpha: 0.03)
         return textField
     }()
     
@@ -54,6 +54,8 @@ class SignupContainerView: UIView {
         let button = UIButton(type: .system)
         button.setTitle("Signup", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
         button.layer.borderWidth = 1
         button.layer.cornerRadius = 5
         button.clipsToBounds = true
@@ -80,8 +82,8 @@ class SignupContainerView: UIView {
             plusPhotoButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             plusPhotoButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 40),
             stackView.topAnchor.constraint(equalTo: plusPhotoButton.bottomAnchor, constant: 20),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
             stackView.heightAnchor.constraint(equalToConstant: 212)
         ])
     }
