@@ -21,6 +21,7 @@ class SignupContainerView: UIView {
         button.clipsToBounds = true
         button.layer.borderWidth = 2
         button.layer.borderColor = #colorLiteral(red: 0, green: 0.6509803922, blue: 1, alpha: 1)
+        button.addTarget(self, action: #selector(SignupController.handlePlusPhoto), for: .touchUpInside)
         return button
     }()
     
