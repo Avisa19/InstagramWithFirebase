@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SignupContainerView: UIView {
     
@@ -27,8 +28,10 @@ class SignupContainerView: UIView {
         let textField = UITextField()
         textField.placeholder = "Email"
         textField.font = UIFont.systemFont(ofSize: 14, weight: .heavy)
+        textField.textColor = .gray
         textField.borderStyle = .roundedRect
         textField.backgroundColor = UIColor(white: 0, alpha: 0.03)
+        textField.addTarget(self, action: #selector(SignupController.handleInputTextChanged), for: .editingChanged)
         return textField
     }()
     
@@ -36,8 +39,10 @@ class SignupContainerView: UIView {
         let textField = UITextField()
         textField.placeholder = "Username"
         textField.font = UIFont.systemFont(ofSize: 14, weight: .heavy)
+        textField.textColor = .gray
         textField.borderStyle = .roundedRect
         textField.backgroundColor = UIColor(white: 0, alpha: 0.03)
+        textField.addTarget(self, action: #selector(SignupController.handleInputTextChanged), for: .editingChanged)
         return textField
     }()
     
@@ -45,21 +50,26 @@ class SignupContainerView: UIView {
         let textField = UITextField()
         textField.placeholder = "Password"
         textField.font = UIFont.systemFont(ofSize: 14, weight: .heavy)
+        textField.textColor = .gray
         textField.borderStyle = .roundedRect
+        textField.isSecureTextEntry = true
         textField.backgroundColor = UIColor(white: 0, alpha: 0.03)
+        textField.addTarget(self, action: #selector(SignupController.handleInputTextChanged), for: .editingChanged)
         return textField
     }()
     
     let signupButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Signup", for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .heavy)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
         button.layer.borderWidth = 1
         button.layer.cornerRadius = 5
         button.clipsToBounds = true
         button.layer.borderColor = #colorLiteral(red: 0, green: 0.6509803922, blue: 1, alpha: 1)
+        button.addTarget(self, action: #selector(SignupController.handleSignup), for: .touchUpInside)
+        button.isEnabled = true
         return button
     }()
     
