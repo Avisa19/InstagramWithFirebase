@@ -11,6 +11,7 @@ import Firebase
 
 class LoginController: UIViewController {
     
+//    let mainTabBarController = MainTabBarController()
  
     let loginView = LoginContainerView()
 
@@ -28,7 +29,24 @@ class LoginController: UIViewController {
     }
     
     @objc func handleLogin() {
-        print("Login...")
+        
+        guard let email = loginView.emailTextField.text, let password = loginView.passwordTextField.text else { return }
+        
+        Auth.auth().signIn(withEmail: email, password: password) { (result, err) in
+            if let err = err {
+                print("Failed to log in:", err)
+                return
+            }
+            
+            guard let uid = result?.user.uid else { return }
+            // to reset & refresh the tabBar page.
+              let mainTabBarController = UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.rootViewController as? MainTabBarController
+
+            mainTabBarController?.setupViewControllers()
+            
+            print("user successfully logged in:", uid)
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     @objc func handleEditChanged() {

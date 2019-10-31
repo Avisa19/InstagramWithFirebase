@@ -73,6 +73,11 @@ class SignupController: UIViewController {
                         }
                         
                         print("Successfully saved to Db.")
+                        // to reset & refresh the tabBar page.
+                                     let mainTabBarController = UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.rootViewController as? MainTabBarController
+
+                                   mainTabBarController?.setupViewControllers()
+                        self.dismiss(animated: true, completion: nil)
                     }
                 }
                 
