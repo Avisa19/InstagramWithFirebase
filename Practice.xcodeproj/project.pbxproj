@@ -14,6 +14,8 @@
 		8B3F00F12369586300FDD48E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B3F00F02369586300FDD48E /* Assets.xcassets */; };
 		8B3F00F42369586300FDD48E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B3F00F22369586300FDD48E /* LaunchScreen.storyboard */; };
 		8B3F00FC2369592600FDD48E /* Extensions+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3F00FB2369592600FDD48E /* Extensions+UIView.swift */; };
+		8B46C2B1236AA7F000CDA5B7 /* UserProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B46C2B0236AA7F000CDA5B7 /* UserProfileHeader.swift */; };
+		8B46C2B4236AB58100CDA5B7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B46C2B3236AB58100CDA5B7 /* User.swift */; };
 		8B481063236964A000BCF533 /* SignupContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B481062236964A000BCF533 /* SignupContainerView.swift */; };
 		8B48106523696BD300BCF533 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8B48106423696BD300BCF533 /* GoogleService-Info.plist */; };
 		8B481069236971B000BCF533 /* SignupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B481068236971B000BCF533 /* SignupController.swift */; };
@@ -31,6 +33,8 @@
 		8B3F00F32369586300FDD48E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8B3F00F52369586300FDD48E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B3F00FB2369592600FDD48E /* Extensions+UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extensions+UIView.swift"; sourceTree = "<group>"; };
+		8B46C2B0236AA7F000CDA5B7 /* UserProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileHeader.swift; sourceTree = "<group>"; };
+		8B46C2B3236AB58100CDA5B7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8B481062236964A000BCF533 /* SignupContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupContainerView.swift; sourceTree = "<group>"; };
 		8B48106423696BD300BCF533 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8B481068236971B000BCF533 /* SignupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupController.swift; sourceTree = "<group>"; };
@@ -84,6 +88,7 @@
 			children = (
 				8B3F00E72369585F00FDD48E /* AppDelegate.swift */,
 				8B3F00E92369585F00FDD48E /* SceneDelegate.swift */,
+				8B46C2B2236AB56500CDA5B7 /* Models */,
 				8B4810602369645300BCF533 /* Views */,
 				8B4810612369646900BCF533 /* Controllers */,
 				8B3F00ED2369585F00FDD48E /* Main.storyboard */,
@@ -94,6 +99,14 @@
 				8B48106423696BD300BCF533 /* GoogleService-Info.plist */,
 			);
 			path = Practice;
+			sourceTree = "<group>";
+		};
+		8B46C2B2236AB56500CDA5B7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8B46C2B3236AB58100CDA5B7 /* User.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		8B48105F23695C4400BCF533 /* Utilities */ = {
@@ -108,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				8B481062236964A000BCF533 /* SignupContainerView.swift */,
+				8B46C2B0236AA7F000CDA5B7 /* UserProfileHeader.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -249,7 +263,9 @@
 				8B481063236964A000BCF533 /* SignupContainerView.swift in Sources */,
 				8B3F00E82369585F00FDD48E /* AppDelegate.swift in Sources */,
 				8B4F8F692369C24700AB3EA9 /* MainTabBarController.swift in Sources */,
+				8B46C2B1236AA7F000CDA5B7 /* UserProfileHeader.swift in Sources */,
 				8B3F00FC2369592600FDD48E /* Extensions+UIView.swift in Sources */,
+				8B46C2B4236AB58100CDA5B7 /* User.swift in Sources */,
 				8B4F8F6B2369C3E600AB3EA9 /* UserProfileController.swift in Sources */,
 				8B481069236971B000BCF533 /* SignupController.swift in Sources */,
 				8B3F00EA2369585F00FDD48E /* SceneDelegate.swift in Sources */,
