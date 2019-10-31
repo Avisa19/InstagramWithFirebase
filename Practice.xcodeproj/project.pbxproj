@@ -17,6 +17,8 @@
 		8B481063236964A000BCF533 /* SignupContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B481062236964A000BCF533 /* SignupContainerView.swift */; };
 		8B48106523696BD300BCF533 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8B48106423696BD300BCF533 /* GoogleService-Info.plist */; };
 		8B481069236971B000BCF533 /* SignupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B481068236971B000BCF533 /* SignupController.swift */; };
+		8B4F8F692369C24700AB3EA9 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4F8F682369C24700AB3EA9 /* MainTabBarController.swift */; };
+		8B4F8F6B2369C3E600AB3EA9 /* UserProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4F8F6A2369C3E600AB3EA9 /* UserProfileController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		8B481062236964A000BCF533 /* SignupContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupContainerView.swift; sourceTree = "<group>"; };
 		8B48106423696BD300BCF533 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8B481068236971B000BCF533 /* SignupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupController.swift; sourceTree = "<group>"; };
+		8B4F8F682369C24700AB3EA9 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		8B4F8F6A2369C3E600AB3EA9 /* UserProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileController.swift; sourceTree = "<group>"; };
 		D46B602EA094B9516FAC08C5 /* Pods-Practice.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Practice.debug.xcconfig"; path = "Target Support Files/Pods-Practice/Pods-Practice.debug.xcconfig"; sourceTree = "<group>"; };
 		F354C56BB7039FCB1E587001 /* Pods_Practice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Practice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -112,6 +116,8 @@
 			isa = PBXGroup;
 			children = (
 				8B481068236971B000BCF533 /* SignupController.swift */,
+				8B4F8F682369C24700AB3EA9 /* MainTabBarController.swift */,
+				8B4F8F6A2369C3E600AB3EA9 /* UserProfileController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -242,7 +248,9 @@
 			files = (
 				8B481063236964A000BCF533 /* SignupContainerView.swift in Sources */,
 				8B3F00E82369585F00FDD48E /* AppDelegate.swift in Sources */,
+				8B4F8F692369C24700AB3EA9 /* MainTabBarController.swift in Sources */,
 				8B3F00FC2369592600FDD48E /* Extensions+UIView.swift in Sources */,
+				8B4F8F6B2369C3E600AB3EA9 /* UserProfileController.swift in Sources */,
 				8B481069236971B000BCF533 /* SignupController.swift in Sources */,
 				8B3F00EA2369585F00FDD48E /* SceneDelegate.swift in Sources */,
 			);

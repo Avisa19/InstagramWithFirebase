@@ -44,6 +44,7 @@ class SignupController: UIViewController {
             let fileName = NSUUID().uuidString
             
             let storageRef = Storage.storage().reference().child("profile_Image").child(fileName)
+            
             // take image and save it as a Data to firebase Storage
             storageRef.putData(uploadData, metadata: nil) { (metaData, err) in
                 
