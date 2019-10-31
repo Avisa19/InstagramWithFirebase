@@ -95,6 +95,10 @@ class SignupController: UIViewController {
             signupView.signupButton.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
         }
     }
+    
+    @objc func handleSignIn() {
+        navigationController?.popViewController(animated: true)
+    }
 
 }
 

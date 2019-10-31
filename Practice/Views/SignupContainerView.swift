@@ -74,6 +74,17 @@ class SignupContainerView: UIView {
         return button
     }()
     
+    let signinButton: UIButton = {
+             let button = UIButton(type: .system)
+
+         let attributedText = NSMutableAttributedString(string: "Already have an account? ", attributes: [.font: UIFont.systemFont(ofSize: 14, weight: .medium), .foregroundColor: UIColor.gray])
+             attributedText.append(NSAttributedString(string: " Sign In.", attributes: [.font: UIFont.systemFont(ofSize: 14, weight: .heavy), .foregroundColor: #colorLiteral(red: 0, green: 0.4705882353, blue: 0.8039215686, alpha: 1)]))
+
+         button.setAttributedTitle(attributedText, for: .normal)
+        button.addTarget(self, action: #selector(SignupController.handleSignIn), for: .touchUpInside)
+             return button
+         }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -97,6 +108,9 @@ class SignupContainerView: UIView {
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
             stackView.heightAnchor.constraint(equalToConstant: 212)
         ])
+        
+        addSubview(signinButton)
+        signinButton.anchor(top: nil, leading: leadingAnchor, bottom: safeAreaLayoutGuide.bottomAnchor, trailing: trailingAnchor, padding: .zero, size: .init(width: 0, height: 38))
     }
     
     required init?(coder: NSCoder) {
