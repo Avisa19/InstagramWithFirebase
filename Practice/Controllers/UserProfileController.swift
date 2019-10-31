@@ -24,6 +24,31 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
         
         fetchUser()
+        
+        setupLogoutButton()
+        
+    }
+    
+    fileprivate func setupLogoutButton() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "settings").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleLogout))
+    }
+    
+    let loginController = LoginController()
+    
+    @objc fileprivate func handleLogout() {
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alertController.addAction(UIAlertAction(title: "Log Out", style: .destructive, handler: { (_) in
+            do {
+                
+                try Auth.auth().signOut()
+                
+            } catch let err {
+                print("Failed to log out..:", err)
+            }
+        }))
+        
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(alertController, animated: true, completion: nil)
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -46,6 +71,19 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
         cell.backgroundColor = .orange
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = (view.frame.width - 2) / 3
+        return CGSize(width: width, height: width)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 1
     }
 
     fileprivate func fetchUser() {
