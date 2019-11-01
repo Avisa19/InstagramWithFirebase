@@ -9,12 +9,30 @@
 import UIKit
 import Firebase
 
+extension MainTabBarController: UITabBarControllerDelegate {
+    
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        
+        let index = viewControllers?.firstIndex(of: viewController)
+        if index == 2 {
+            
+            let layout = UICollectionViewFlowLayout()
+            let photoSelectorController = PhotoselectorController(collectionViewLayout: layout)
+            let navController = UINavigationController(rootViewController: photoSelectorController)
+            present(navController, animated: true, completion: nil)
+            return false
+        }
+        
+        return true
+    }
+}
+
 class MainTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .orange
+        self.delegate = self
         
         if Auth.auth().currentUser == nil {
             
@@ -39,7 +57,7 @@ class MainTabBarController: UITabBarController {
         let navSearch = templateNavController(selectedImage: #imageLiteral(resourceName: "search"), unSelectedImage: #imageLiteral(resourceName: "search"), rootViewController: SearchController())
 
         // Plus
-        let navPlus = templateNavController(selectedImage: #imageLiteral(resourceName: "plus"), unSelectedImage: #imageLiteral(resourceName: "plus"), rootViewController: PlusController())
+        let navPlus = templateNavController(selectedImage: #imageLiteral(resourceName: "plus"), unSelectedImage: #imageLiteral(resourceName: "plus"), rootViewController: UIViewController())
         
         // Heart
         let navHeart = templateNavController(selectedImage: #imageLiteral(resourceName: "hearts"), unSelectedImage: #imageLiteral(resourceName: "hearts"), rootViewController: HeartController())
@@ -72,5 +90,6 @@ class MainTabBarController: UITabBarController {
     }
 
 }
+
 
 
