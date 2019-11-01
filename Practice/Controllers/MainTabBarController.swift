@@ -31,14 +31,45 @@ class MainTabBarController: UITabBarController {
     }
     
      func setupViewControllers() {
-          let userProfileController = UserProfileController(collectionViewLayout: UICollectionViewFlowLayout())
-          let navController = UINavigationController(rootViewController: userProfileController)
-          navController.tabBarItem.image = #imageLiteral(resourceName: "user")
-          navController.tabBarItem.selectedImage = #imageLiteral(resourceName: "user")
+        
+        // Home
+        let navHome = templateNavController(selectedImage: #imageLiteral(resourceName: "home"), unSelectedImage: #imageLiteral(resourceName: "home"), rootViewController: HomeController())
+        
+        // Search
+        let navSearch = templateNavController(selectedImage: #imageLiteral(resourceName: "search"), unSelectedImage: #imageLiteral(resourceName: "search"), rootViewController: SearchController())
+
+        // Plus
+        let navPlus = templateNavController(selectedImage: #imageLiteral(resourceName: "plus"), unSelectedImage: #imageLiteral(resourceName: "plus"), rootViewController: PlusController())
+        
+        // Heart
+        let navHeart = templateNavController(selectedImage: #imageLiteral(resourceName: "hearts"), unSelectedImage: #imageLiteral(resourceName: "hearts"), rootViewController: HeartController())
+        
+        // user profile
+        let navProfile = templateNavController(selectedImage: #imageLiteral(resourceName: "user"), unSelectedImage: #imageLiteral(resourceName: "user"), rootViewController: UserProfileController(collectionViewLayout: UICollectionViewFlowLayout()))
           
-          viewControllers = [navController, UIViewController()]
+          viewControllers = [navHome,
+                             navSearch,
+                             navPlus,
+                             navHeart,
+                             navProfile]
+        
+        // modify tabBar items
+        guard let items = tabBar.items else { return }
+        
+        for item in items {
+            item.imageInsets = UIEdgeInsets(top: 4, left: 0, bottom: -4, right: 0)
+        }
       }
   
+    func templateNavController(selectedImage: UIImage, unSelectedImage: UIImage, rootViewController: UIViewController = UIViewController()) -> UINavigationController {
+        
+        let viewController = rootViewController
+        let navController = UINavigationController(rootViewController: viewController)
+        navController.tabBarItem.image = selectedImage.withRenderingMode(.alwaysOriginal)
+        navController.tabBarItem.selectedImage = unSelectedImage
+        
+        return navController
+    }
 
 }
 
