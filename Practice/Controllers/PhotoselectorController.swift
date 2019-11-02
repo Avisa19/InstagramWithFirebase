@@ -18,6 +18,9 @@ extension PhotoselectorController {
         
         self.selectedImage = images[indexPath.item]
         collectionView.reloadData()
+        
+        let indexPath = IndexPath(item: 0, section: 0)
+        collectionView.scrollToItem(at: indexPath, at: .bottom, animated: true)
     }
 }
 
@@ -104,12 +107,19 @@ class PhotoselectorController: UICollectionViewController, UICollectionViewDeleg
     }
     
     @objc fileprivate func handleNext() {
-        print("Share...")
+        
+       let sharePhotoController = SharePhotoController()
+        sharePhotoController.selectedImage = header?.photoHeader.image
+        navigationController?.pushViewController(sharePhotoController, animated: true)
     }
+    
+    var header: PhotoSelectorHeader?
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! PhotoSelectorHeader
+        
+        self.header = header
         
         header.photoHeader.image = selectedImage
         

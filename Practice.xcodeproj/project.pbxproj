@@ -27,8 +27,10 @@
 		8B481063236964A000BCF533 /* SignupContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B481062236964A000BCF533 /* SignupContainerView.swift */; };
 		8B48106523696BD300BCF533 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8B48106423696BD300BCF533 /* GoogleService-Info.plist */; };
 		8B481069236971B000BCF533 /* SignupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B481068236971B000BCF533 /* SignupController.swift */; };
+		8B4ADA75236D410500CE06C6 /* ShareContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4ADA74236D410400CE06C6 /* ShareContainerView.swift */; };
 		8B4F8F692369C24700AB3EA9 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4F8F682369C24700AB3EA9 /* MainTabBarController.swift */; };
 		8B4F8F6B2369C3E600AB3EA9 /* UserProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4F8F6A2369C3E600AB3EA9 /* UserProfileController.swift */; };
+		8B990BCF236C8EC5006B46F9 /* SharePhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B990BCE236C8EC5006B46F9 /* SharePhotoController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,8 +56,10 @@
 		8B481062236964A000BCF533 /* SignupContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupContainerView.swift; sourceTree = "<group>"; };
 		8B48106423696BD300BCF533 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8B481068236971B000BCF533 /* SignupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupController.swift; sourceTree = "<group>"; };
+		8B4ADA74236D410400CE06C6 /* ShareContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareContainerView.swift; sourceTree = "<group>"; };
 		8B4F8F682369C24700AB3EA9 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		8B4F8F6A2369C3E600AB3EA9 /* UserProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileController.swift; sourceTree = "<group>"; };
+		8B990BCE236C8EC5006B46F9 /* SharePhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePhotoController.swift; sourceTree = "<group>"; };
 		D46B602EA094B9516FAC08C5 /* Pods-Practice.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Practice.debug.xcconfig"; path = "Target Support Files/Pods-Practice/Pods-Practice.debug.xcconfig"; sourceTree = "<group>"; };
 		F354C56BB7039FCB1E587001 /* Pods_Practice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Practice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -141,6 +145,7 @@
 				8B46C2B7236AF18700CDA5B7 /* LoginContainerView.swift */,
 				8B4596B9236C297F00F18DC3 /* PhotoSelectorCell.swift */,
 				8B4596BB236C2E2900F18DC3 /* PhotoSelectorHeader.swift */,
+				8B4ADA74236D410400CE06C6 /* ShareContainerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -156,6 +161,7 @@
 				8B4596B1236BFF7E00F18DC3 /* SearchController.swift */,
 				8B4596B5236C00CB00F18DC3 /* HeartController.swift */,
 				8B4596B7236C14E400F18DC3 /* PhotoselectorController.swift */,
+				8B990BCE236C8EC5006B46F9 /* SharePhotoController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -290,9 +296,11 @@
 				8B4596B2236BFF7E00F18DC3 /* SearchController.swift in Sources */,
 				8B46C2B1236AA7F000CDA5B7 /* UserProfileHeader.swift in Sources */,
 				8B3F00FC2369592600FDD48E /* Extensions+UIView.swift in Sources */,
+				8B990BCF236C8EC5006B46F9 /* SharePhotoController.swift in Sources */,
 				8B4596B8236C14E400F18DC3 /* PhotoselectorController.swift in Sources */,
 				8B46C2B4236AB58100CDA5B7 /* User.swift in Sources */,
 				8B4F8F6B2369C3E600AB3EA9 /* UserProfileController.swift in Sources */,
+				8B4ADA75236D410500CE06C6 /* ShareContainerView.swift in Sources */,
 				8B4596BC236C2E2900F18DC3 /* PhotoSelectorHeader.swift in Sources */,
 				8B4596B6236C00CB00F18DC3 /* HeartController.swift in Sources */,
 				8B481069236971B000BCF533 /* SignupController.swift in Sources */,
