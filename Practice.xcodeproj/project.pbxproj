@@ -28,8 +28,10 @@
 		8B48106523696BD300BCF533 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8B48106423696BD300BCF533 /* GoogleService-Info.plist */; };
 		8B481069236971B000BCF533 /* SignupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B481068236971B000BCF533 /* SignupController.swift */; };
 		8B4ADA75236D410500CE06C6 /* ShareContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4ADA74236D410400CE06C6 /* ShareContainerView.swift */; };
+		8B4ADA77236D92F300CE06C6 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4ADA76236D92F300CE06C6 /* Post.swift */; };
 		8B4F8F692369C24700AB3EA9 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4F8F682369C24700AB3EA9 /* MainTabBarController.swift */; };
 		8B4F8F6B2369C3E600AB3EA9 /* UserProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4F8F6A2369C3E600AB3EA9 /* UserProfileController.swift */; };
+		8B8AA0D9236D9B5200799610 /* UserProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8AA0D8236D9B5200799610 /* UserProfileCell.swift */; };
 		8B990BCF236C8EC5006B46F9 /* SharePhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B990BCE236C8EC5006B46F9 /* SharePhotoController.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,8 +59,10 @@
 		8B48106423696BD300BCF533 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8B481068236971B000BCF533 /* SignupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupController.swift; sourceTree = "<group>"; };
 		8B4ADA74236D410400CE06C6 /* ShareContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareContainerView.swift; sourceTree = "<group>"; };
+		8B4ADA76236D92F300CE06C6 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		8B4F8F682369C24700AB3EA9 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		8B4F8F6A2369C3E600AB3EA9 /* UserProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileController.swift; sourceTree = "<group>"; };
+		8B8AA0D8236D9B5200799610 /* UserProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileCell.swift; sourceTree = "<group>"; };
 		8B990BCE236C8EC5006B46F9 /* SharePhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePhotoController.swift; sourceTree = "<group>"; };
 		D46B602EA094B9516FAC08C5 /* Pods-Practice.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Practice.debug.xcconfig"; path = "Target Support Files/Pods-Practice/Pods-Practice.debug.xcconfig"; sourceTree = "<group>"; };
 		F354C56BB7039FCB1E587001 /* Pods_Practice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Practice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -125,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				8B46C2B3236AB58100CDA5B7 /* User.swift */,
+				8B4ADA76236D92F300CE06C6 /* Post.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -146,6 +151,7 @@
 				8B4596B9236C297F00F18DC3 /* PhotoSelectorCell.swift */,
 				8B4596BB236C2E2900F18DC3 /* PhotoSelectorHeader.swift */,
 				8B4ADA74236D410400CE06C6 /* ShareContainerView.swift */,
+				8B8AA0D8236D9B5200799610 /* UserProfileCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -306,9 +312,11 @@
 				8B481069236971B000BCF533 /* SignupController.swift in Sources */,
 				8B4596B0236BFE7800F18DC3 /* HomeController.swift in Sources */,
 				8B3F00EA2369585F00FDD48E /* SceneDelegate.swift in Sources */,
+				8B8AA0D9236D9B5200799610 /* UserProfileCell.swift in Sources */,
 				8B4596BA236C297F00F18DC3 /* PhotoSelectorCell.swift in Sources */,
 				8B46C2B8236AF18700CDA5B7 /* LoginContainerView.swift in Sources */,
 				8B46C2B6236AEC4200CDA5B7 /* LoginController.swift in Sources */,
+				8B4ADA77236D92F300CE06C6 /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
