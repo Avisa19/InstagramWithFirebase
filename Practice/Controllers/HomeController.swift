@@ -26,31 +26,37 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     fileprivate func setupNavigationItems() {
+        navigationController?.navigationBar.isTranslucent = false
+        //        let image = UIImageView(image: #imageLiteral(resourceName: "profile"))
+        //        navigationItem.titleView = image
         
-//        let image = UIImageView(image: #imageLiteral(resourceName: "profile"))
-//        navigationItem.titleView = image
         
-     
         
     }
     
     var posts = [Post]()
     
-     fileprivate func fetchPosts() {
+    fileprivate func fetchPosts() {
+        
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
             
-            guard let uid = Auth.auth().currentUser?.uid else { return }
-           let ref = Database.database().reference().child("posts").child(uid)
+            guard let dictionary = snapshot.value as? [String: Any] else { return }
+            
+            let user = User(dictionary: dictionary)
+            
+            let ref = Database.database().reference().child("posts").child(uid)
+            
             ref.observeSingleEvent(of: .value, with: { (snapshot) in
                 
                 guard let dictianaries = snapshot.value as? [String: Any] else { return }
                 dictianaries.forEach { (key, value) in
                     
-    //                print("key: \(key), value: \(value)")
-                    guard let dictionary = value as?
-                        [String: Any] else { return }
+                    guard let postDictionary = value as? [String: Any] else { return }
                     
-                    let post = Post(dictionary: dictionary)
-                    print(post.caption)
+                    let post = Post(user: user, dictionary: postDictionary)
+                    
                     self.posts.append(post)
                 }
                 
@@ -61,6 +67,14 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
             }) { (err) in
                 print("Failed to fetch post:", err)
             }
+            
+            
+            
+            self.collectionView.reloadData()
+            
+        }) { (err) in
+            print("failed to fetch user:", err)
+        }
             
         }
         
