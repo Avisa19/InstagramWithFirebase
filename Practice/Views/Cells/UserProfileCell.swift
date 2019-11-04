@@ -16,9 +16,9 @@ class UserProfileCell: UICollectionViewCell {
 //            print(1)
             guard let imageUrl = post?.imageUrl else { return }
             postImages.loadImage(urlString: imageUrl)
-          
         }
     }
+ 
     
     let postImages: CustomImageView = {
         let imageView = CustomImageView()
