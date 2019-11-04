@@ -28,7 +28,6 @@ class SearchCell: UICollectionViewCell {
         let iv = CustomImageView()
         iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
-        iv.backgroundColor = .systemRed
         iv.layer.cornerRadius = 44 / 2
         return iv
     }()
@@ -58,7 +57,7 @@ class SearchCell: UICollectionViewCell {
         usernameLabel.anchor(top: nil, leading: profileImageView.trailingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 0, left: 8, bottom: 0, right: 8), size: .init(width: 0, height: 58))
         
         addSubview(seperatorView)
-        seperatorView.anchor(top: nil, leading: profileImageView.trailingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, padding: .zero, size: .init(width: 0, height: 1))
+        seperatorView.anchor(top: nil, leading: profileImageView.trailingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, padding: .zero, size: .init(width: 0, height: 0.5))
     }
     
     required init?(coder: NSCoder) {

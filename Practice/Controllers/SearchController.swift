@@ -11,6 +11,23 @@ import Firebase
 
 private let cellId = "Cell"
 
+extension SearchController {
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let user = filteredUsers[indexPath.item]
+        
+        searchView.searchBar.isHidden = true
+        
+        searchView.searchBar.resignFirstResponder()
+        
+        let userProfileController = UserProfileController(collectionViewLayout: UICollectionViewFlowLayout())
+       
+        userProfileController.userId = user.uid
+        navigationController?.pushViewController(userProfileController, animated: true)
+    }
+}
+
 class SearchController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     let searchView = SearchContainerView()
@@ -26,7 +43,16 @@ class SearchController: UICollectionViewController, UICollectionViewDelegateFlow
         
         searchView.searchBar.delegate = self
         
+        collectionView.alwaysBounceVertical = true
+        collectionView.keyboardDismissMode = .onDrag
+        
         fetchUsers()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        searchView.searchBar.isHidden = false
     }
     
     var users = [User]()
@@ -42,6 +68,11 @@ class SearchController: UICollectionViewController, UICollectionViewDelegateFlow
             guard let dictionaries = snapshot.value as? [String: Any] else { return }
             
             dictionaries.forEach { (key, value) in
+                
+                if key == Auth.auth().currentUser?.uid {
+                    print("Found myself ,omit from list.")
+                    return
+                }
                 
                 guard let userDictionay = value as? [String: Any] else { return }
                 let user = User(uid: key, dictionary: userDictionay)
