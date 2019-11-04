@@ -61,21 +61,27 @@ class HomePostView: UIView {
        
        let bookmarkButton: UIButton = {
            let button = UIButton(type: .system)
-           button.setImage(#imageLiteral(resourceName: "bookmark").withRenderingMode(.alwaysOriginal), for: .normal)
-           return button
+        button.setImage(#imageLiteral(resourceName: "bookmark").withRenderingMode(.alwaysOriginal), for: .normal)
+        return button
        }()
-       
-       
-       let captionLabel: UILabel = {
-           let label = UILabel()
-           label.numberOfLines = 0
-           return label
-       }()
-       
+    
+    
+    let captionLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    let seperatorDivider: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(white: 0, alpha: 0.3)
+        return view
+    }()
+    
        override init(frame: CGRect) {
            super.init(frame: frame)
            
-           backgroundColor = UIColor(white: 0, alpha: 0.1)
+        backgroundColor = .white
            addSubview(photoImageView)
            addSubview(userProfileImageView)
            addSubview(usernameLabel)
@@ -102,7 +108,12 @@ class HomePostView: UIView {
            bookmarkButton.anchor(top: photoImageView.bottomAnchor, leading: nil, bottom: nil, trailing: trailingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 8), size: .init(width: 50, height: 50))
            
            addSubview(captionLabel)
-           captionLabel.anchor(top: stackViews.bottomAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, padding: .init(top: 0, left: 8, bottom: 0, right: 8))
+           captionLabel.anchor(top: stackViews.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 0, left: 8, bottom: 0, right: 8))
+        
+           addSubview(seperatorDivider)
+        seperatorDivider.anchor(top: captionLabel.bottomAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, padding: .init(top: 0, left: 12, bottom: 0, right: 12), size: .init(width: 0, height: 0.5))
+        
+        
        }
        
        required init?(coder: NSCoder) {

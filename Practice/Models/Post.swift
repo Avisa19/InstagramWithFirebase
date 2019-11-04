@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Post {
     
@@ -18,7 +19,8 @@ struct Post {
     init(user: User, dictionary: [String: Any]) {
         self.imageUrl = dictionary["imageUrl"] as? String ?? ""
         self.caption = dictionary["caption"] as? String ?? ""
-        self.creationDate = dictionary["creationDate"] as? Date ?? Date()
+       let secondsFromNow = dictionary["creationDate"] as? Double ?? 0
+        self.creationDate = Date(timeIntervalSince1970: secondsFromNow)
         self.user = user
     }
 }

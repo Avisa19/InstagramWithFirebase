@@ -38,17 +38,19 @@ class HomePostCell: UICollectionViewCell {
         attributedText.append(NSAttributedString(string: " \(post.caption)", attributes: [.font: UIFont.systemFont(ofSize: 14, weight: .regular)]))
         
         attributedText.append(NSAttributedString(string: "\n\n", attributes: [.font: UIFont.systemFont(ofSize: 4, weight: .regular)]))
-        attributedText.append(NSAttributedString(string: "1 week ago", attributes: [.font: UIFont.systemFont(ofSize: 14, weight: .regular), .foregroundColor: UIColor.systemGray]))
         
-            homePostView.captionLabel.attributedText = attributedText
+         let timeAgoDisplay = post.creationDate.timeAgoDisplay()
+        attributedText.append(NSAttributedString(string: timeAgoDisplay, attributes: [.font: UIFont.systemFont(ofSize: 14, weight: .regular), .foregroundColor: UIColor.systemGray]))
+        
+        homePostView.captionLabel.attributedText = attributedText
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-    
+        
         addSubview(homePostView)
         homePostView.fillSuperview()
-    
+        
     }
     
     required init?(coder: NSCoder) {

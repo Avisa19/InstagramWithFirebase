@@ -10,7 +10,6 @@ import UIKit
 import Firebase
 
 
-
 class UserProfileController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     var user: User?

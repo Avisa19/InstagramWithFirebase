@@ -41,6 +41,7 @@
 		8BF43532236EDDDB00A4AB4D /* FirebaseUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF43531236EDDDB00A4AB4D /* FirebaseUtils.swift */; };
 		8BF43534236EE28A00A4AB4D /* SearchContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF43533236EE28A00A4AB4D /* SearchContainerView.swift */; };
 		8BF43536236EE67A00A4AB4D /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF43535236EE67A00A4AB4D /* SearchCell.swift */; };
+		8BF7FBF423701352003A5756 /* TimeAgoDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF7FBF323701352003A5756 /* TimeAgoDisplay.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +81,7 @@
 		8BF43531236EDDDB00A4AB4D /* FirebaseUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUtils.swift; sourceTree = "<group>"; };
 		8BF43533236EE28A00A4AB4D /* SearchContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchContainerView.swift; sourceTree = "<group>"; };
 		8BF43535236EE67A00A4AB4D /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
+		8BF7FBF323701352003A5756 /* TimeAgoDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeAgoDisplay.swift; sourceTree = "<group>"; };
 		D46B602EA094B9516FAC08C5 /* Pods-Practice.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Practice.debug.xcconfig"; path = "Target Support Files/Pods-Practice/Pods-Practice.debug.xcconfig"; sourceTree = "<group>"; };
 		F354C56BB7039FCB1E587001 /* Pods_Practice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Practice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -156,6 +158,7 @@
 				8B3F00FB2369592600FDD48E /* Extensions+UIView.swift */,
 				8B8AA0DA236DA41600799610 /* CustomImageView.swift */,
 				8BF43531236EDDDB00A4AB4D /* FirebaseUtils.swift */,
+				8BF7FBF323701352003A5756 /* TimeAgoDisplay.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 				8B46C2B8236AF18700CDA5B7 /* LoginContainerView.swift in Sources */,
 				8B46C2B6236AEC4200CDA5B7 /* LoginController.swift in Sources */,
 				8B4ADA77236D92F300CE06C6 /* Post.swift in Sources */,
+				8BF7FBF423701352003A5756 /* TimeAgoDisplay.swift in Sources */,
 				8B8AA0DD236DAE7900799610 /* HomePostCell.swift in Sources */,
 				8BF43534236EE28A00A4AB4D /* SearchContainerView.swift in Sources */,
 			);
