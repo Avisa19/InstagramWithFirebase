@@ -8,6 +8,24 @@
 
 import UIKit
 
+extension SearchController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        if searchText.isEmpty {
+            
+            filteredUsers = users
+            collectionView.reloadData()
+            return
+        }
+        filteredUsers = self.users.filter { (user) -> Bool in
+            return user.username.lowercased().contains(searchText.lowercased())
+        }
+        
+        self.collectionView.reloadData()
+    }
+}
+
 class SearchContainerView: UIView {
     
     let searchBar: UISearchBar = {

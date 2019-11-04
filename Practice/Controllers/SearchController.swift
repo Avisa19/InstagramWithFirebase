@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import Firebase
 
 private let cellId = "Cell"
 
 class SearchController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     let searchView = SearchContainerView()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +23,42 @@ class SearchController: UICollectionViewController, UICollectionViewDelegateFlow
         collectionView.register(SearchCell.self, forCellWithReuseIdentifier: cellId)
         
         setupSearchBarInNavBar()
+        
+        searchView.searchBar.delegate = self
+        
+        fetchUsers()
+    }
+    
+    var users = [User]()
+    
+    var filteredUsers = [User]()
+    
+    fileprivate func fetchUsers() {
+        
+        let ref = Database.database().reference().child("users")
+        
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            guard let dictionaries = snapshot.value as? [String: Any] else { return }
+            
+            dictionaries.forEach { (key, value) in
+                
+                guard let userDictionay = value as? [String: Any] else { return }
+                let user = User(uid: key, dictionary: userDictionay)
+                
+                self.users.append(user)
+                
+            }
+            
+            self.users.sort { (u1, u2) -> Bool in
+                return u1.username.compare(u2.username) == .orderedAscending
+            }
+            self.filteredUsers = self.users
+            self.collectionView.reloadData()
+            
+        }) { (err) in
+            print("Failed to fetch users:", err)
+        }
     }
     
     fileprivate func setupSearchBarInNavBar() {
@@ -29,11 +67,13 @@ class SearchController: UICollectionViewController, UICollectionViewDelegateFlow
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return filteredUsers.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! SearchCell
+        
+        cell.user = filteredUsers[indexPath.item]
         
         return cell
     }
