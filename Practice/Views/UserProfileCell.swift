@@ -13,7 +13,7 @@ class UserProfileCell: UICollectionViewCell {
     
     var post: Post? {
         didSet {
-            print(1)
+//            print(1)
             guard let imageUrl = post?.imageUrl else { return }
             postImages.loadImage(urlString: imageUrl)
           
@@ -22,7 +22,7 @@ class UserProfileCell: UICollectionViewCell {
     
     let postImages: CustomImageView = {
         let imageView = CustomImageView()
-        imageView.contentMode = .scaleToFill
+        imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         return imageView
     }()

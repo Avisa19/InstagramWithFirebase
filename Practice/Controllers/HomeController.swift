@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 
+
 private let cellId = "Cell"
 
 class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
@@ -38,46 +39,38 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     fileprivate func fetchPosts() {
         
-        guard let uid = Auth.auth().currentUser?.uid else { return }
+          guard let uid = Auth.auth().currentUser?.uid else { return }
         
-        Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+        Database.fetchUserWithUid(uid: uid) { (user) in
+            self.fetchPostsWithUser(user)
+        }
+        
+    }
+    
+    fileprivate func fetchPostsWithUser(_ user: User) {
+      
+        
+        let ref = Database.database().reference().child("posts").child(user.uid)
+        
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
             
-            guard let dictionary = snapshot.value as? [String: Any] else { return }
-            
-            let user = User(dictionary: dictionary)
-            
-            let ref = Database.database().reference().child("posts").child(uid)
-            
-            ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let dictianaries = snapshot.value as? [String: Any] else { return }
+            dictianaries.forEach { (key, value) in
                 
-                guard let dictianaries = snapshot.value as? [String: Any] else { return }
-                dictianaries.forEach { (key, value) in
-                    
-                    guard let postDictionary = value as? [String: Any] else { return }
-                    
-                    let post = Post(user: user, dictionary: postDictionary)
-                    
-                    self.posts.append(post)
-                }
+                guard let postDictionary = value as? [String: Any] else { return }
                 
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                }
+                let post = Post(user: user, dictionary: postDictionary)
                 
-            }) { (err) in
-                print("Failed to fetch post:", err)
+                self.posts.append(post)
             }
-            
-            
             
             self.collectionView.reloadData()
             
         }) { (err) in
             print("failed to fetch user:", err)
         }
-            
-        }
         
+    }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return posts.count

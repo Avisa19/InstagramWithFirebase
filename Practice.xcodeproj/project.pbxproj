@@ -35,6 +35,9 @@
 		8B8AA0DB236DA41600799610 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8AA0DA236DA41600799610 /* CustomImageView.swift */; };
 		8B8AA0DD236DAE7900799610 /* HomePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8AA0DC236DAE7900799610 /* HomePostCell.swift */; };
 		8B990BCF236C8EC5006B46F9 /* SharePhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B990BCE236C8EC5006B46F9 /* SharePhotoController.swift */; };
+		8BF43532236EDDDB00A4AB4D /* FirebaseUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF43531236EDDDB00A4AB4D /* FirebaseUtils.swift */; };
+		8BF43534236EE28A00A4AB4D /* SearchContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF43533236EE28A00A4AB4D /* SearchContainerView.swift */; };
+		8BF43536236EE67A00A4AB4D /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF43535236EE67A00A4AB4D /* SearchCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +71,9 @@
 		8B8AA0DA236DA41600799610 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		8B8AA0DC236DAE7900799610 /* HomePostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePostCell.swift; sourceTree = "<group>"; };
 		8B990BCE236C8EC5006B46F9 /* SharePhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePhotoController.swift; sourceTree = "<group>"; };
+		8BF43531236EDDDB00A4AB4D /* FirebaseUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUtils.swift; sourceTree = "<group>"; };
+		8BF43533236EE28A00A4AB4D /* SearchContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchContainerView.swift; sourceTree = "<group>"; };
+		8BF43535236EE67A00A4AB4D /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		D46B602EA094B9516FAC08C5 /* Pods-Practice.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Practice.debug.xcconfig"; path = "Target Support Files/Pods-Practice/Pods-Practice.debug.xcconfig"; sourceTree = "<group>"; };
 		F354C56BB7039FCB1E587001 /* Pods_Practice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Practice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -116,10 +122,10 @@
 			children = (
 				8B3F00E72369585F00FDD48E /* AppDelegate.swift */,
 				8B3F00E92369585F00FDD48E /* SceneDelegate.swift */,
+				8B3F00ED2369585F00FDD48E /* Main.storyboard */,
 				8B46C2B2236AB56500CDA5B7 /* Models */,
 				8B4810602369645300BCF533 /* Views */,
 				8B4810612369646900BCF533 /* Controllers */,
-				8B3F00ED2369585F00FDD48E /* Main.storyboard */,
 				8B48105F23695C4400BCF533 /* Utilities */,
 				8B3F00F02369586300FDD48E /* Assets.xcassets */,
 				8B3F00F22369586300FDD48E /* LaunchScreen.storyboard */,
@@ -143,6 +149,7 @@
 			children = (
 				8B3F00FB2369592600FDD48E /* Extensions+UIView.swift */,
 				8B8AA0DA236DA41600799610 /* CustomImageView.swift */,
+				8BF43531236EDDDB00A4AB4D /* FirebaseUtils.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -158,6 +165,8 @@
 				8B4ADA74236D410400CE06C6 /* ShareContainerView.swift */,
 				8B8AA0D8236D9B5200799610 /* UserProfileCell.swift */,
 				8B8AA0DC236DAE7900799610 /* HomePostCell.swift */,
+				8BF43533236EE28A00A4AB4D /* SearchContainerView.swift */,
+				8BF43535236EE67A00A4AB4D /* SearchCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -302,6 +311,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BF43532236EDDDB00A4AB4D /* FirebaseUtils.swift in Sources */,
 				8B481063236964A000BCF533 /* SignupContainerView.swift in Sources */,
 				8B3F00E82369585F00FDD48E /* AppDelegate.swift in Sources */,
 				8B4F8F692369C24700AB3EA9 /* MainTabBarController.swift in Sources */,
@@ -314,6 +324,7 @@
 				8B46C2B4236AB58100CDA5B7 /* User.swift in Sources */,
 				8B4F8F6B2369C3E600AB3EA9 /* UserProfileController.swift in Sources */,
 				8B4ADA75236D410500CE06C6 /* ShareContainerView.swift in Sources */,
+				8BF43536236EE67A00A4AB4D /* SearchCell.swift in Sources */,
 				8B4596BC236C2E2900F18DC3 /* PhotoSelectorHeader.swift in Sources */,
 				8B4596B6236C00CB00F18DC3 /* HeartController.swift in Sources */,
 				8B481069236971B000BCF533 /* SignupController.swift in Sources */,
@@ -325,6 +336,7 @@
 				8B46C2B6236AEC4200CDA5B7 /* LoginController.swift in Sources */,
 				8B4ADA77236D92F300CE06C6 /* Post.swift in Sources */,
 				8B8AA0DD236DAE7900799610 /* HomePostCell.swift in Sources */,
+				8BF43534236EE28A00A4AB4D /* SearchContainerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

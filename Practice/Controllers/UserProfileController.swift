@@ -123,23 +123,18 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 1
     }
-
+    
     fileprivate func fetchUser() {
         
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
-        Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+        Database.fetchUserWithUid(uid: uid) { (user) in
             
-            guard let dictionary = snapshot.value as? [String: Any] else { return }
-           
-            self.user = User(dictionary: dictionary)
+            self.user = user
             
             self.navigationItem.title = self.user?.username
             
             self.collectionView.reloadData()
-            
-        }) { (err) in
-            print("failed to fetch user:", err)
         }
     }
    

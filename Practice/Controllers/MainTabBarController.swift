@@ -46,6 +46,7 @@ class MainTabBarController: UITabBarController {
         }
         
         setupViewControllers()
+        
     }
     
      func setupViewControllers() {
@@ -54,7 +55,7 @@ class MainTabBarController: UITabBarController {
         let navHome = templateNavController(selectedImage: #imageLiteral(resourceName: "home"), unSelectedImage: #imageLiteral(resourceName: "home"), rootViewController: HomeController(collectionViewLayout: UICollectionViewFlowLayout()))
         
         // Search
-        let navSearch = templateNavController(selectedImage: #imageLiteral(resourceName: "search"), unSelectedImage: #imageLiteral(resourceName: "search"), rootViewController: SearchController())
+        let navSearch = templateNavController(selectedImage: #imageLiteral(resourceName: "search"), unSelectedImage: #imageLiteral(resourceName: "search"), rootViewController: SearchController(collectionViewLayout: UICollectionViewFlowLayout()))
 
         // Plus
         let navPlus = templateNavController(selectedImage: #imageLiteral(resourceName: "plus"), unSelectedImage: #imageLiteral(resourceName: "plus"), rootViewController: UIViewController())
@@ -88,6 +89,7 @@ class MainTabBarController: UITabBarController {
         
         return navController
     }
+ 
 
 }
 

@@ -8,24 +8,42 @@
 
 import UIKit
 
-class SearchController: UIViewController {
+private let cellId = "Cell"
 
+class SearchController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+    
+    let searchView = SearchContainerView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        view.backgroundColor = .systemPink
+        
+        collectionView.backgroundColor = .white
+        collectionView.register(SearchCell.self, forCellWithReuseIdentifier: cellId)
+        
+        setupSearchBarInNavBar()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    fileprivate func setupSearchBarInNavBar() {
+        navigationController?.navigationBar.addSubview(searchView.searchBar)
+               searchView.searchBar.fillSuperview(padding: .init(top: 0, left: 8, bottom: 0, right: 8))
     }
-    */
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
+    }
+
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! SearchCell
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width, height: 60)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
 
 }
