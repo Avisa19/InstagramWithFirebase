@@ -14,7 +14,6 @@ class HomePostView: UIView {
            let imageView = CustomImageView()
            imageView.contentMode = .scaleAspectFill
            imageView.clipsToBounds = true
-           imageView.backgroundColor = .systemBlue
            imageView.layer.cornerRadius = 40 / 2
            return imageView
        }()
@@ -23,7 +22,6 @@ class HomePostView: UIView {
           let imageView = CustomImageView()
            imageView.contentMode = .scaleAspectFill
            imageView.clipsToBounds = true
-           imageView.backgroundColor = .systemGray
            return imageView
        }()
        

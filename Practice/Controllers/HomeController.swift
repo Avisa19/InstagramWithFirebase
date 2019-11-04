@@ -14,8 +14,17 @@ private let cellId = "Cell"
 
 class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
+    fileprivate func fetchAllPosts() {
+        fetchPosts()
+        
+        fetchFollowingUserUid()
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupNotification()
 
         collectionView.backgroundColor = .white
         
@@ -25,9 +34,33 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         setupNavigationItems()
         
-        fetchPosts()
+        fetchAllPosts()
         
-        fetchFollowingUserUid()
+        setupRefresherControll()
+    }
+    
+    func setupNotification() {
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleUpdateFeed), name: SharePhotoController.newsFeedNotification, object: nil)
+       }
+    
+    @objc func handleUpdateFeed() {
+        handleRefresh()
+    }
+    
+    fileprivate func setupRefresherControll() {
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
+        
+        collectionView.refreshControl = refreshControl
+    }
+    
+    @objc fileprivate func handleRefresh() {
+        
+        posts.removeAll()
+        fetchAllPosts()
+        collectionView.reloadData()
     }
     
     fileprivate func setupNavigationItems() {
@@ -78,6 +111,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         let ref = Database.database().reference().child("posts").child(user.uid)
         
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            self.collectionView.refreshControl?.endRefreshing()
             
             guard let dictianaries = snapshot.value as? [String: Any] else { return }
             dictianaries.forEach { (key, value) in
@@ -92,6 +126,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
             self.posts.sort { (p1, p2) -> Bool in
                 return p1.creationDate.compare(p2.creationDate) == .orderedDescending
             }
+            
+            
                  self.collectionView.reloadData()
             
         }) { (err) in

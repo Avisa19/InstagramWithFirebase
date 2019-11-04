@@ -20,7 +20,7 @@ struct Post {
         self.imageUrl = dictionary["imageUrl"] as? String ?? ""
         self.caption = dictionary["caption"] as? String ?? ""
        let secondsFromNow = dictionary["creationDate"] as? Double ?? 0
-        self.creationDate = Date(timeIntervalSince1970: secondsFromNow)
+        self.creationDate = Date(timeIntervalSinceReferenceDate: secondsFromNow)
         self.user = user
     }
 }
