@@ -50,6 +50,8 @@ class SharePhotoController: UIViewController {
         guard let image = selectedImage else { return }
         guard let uploadedData = image.jpegData(compressionQuality: 0.5) else { return }
         
+        navigationItem.rightBarButtonItem?.isEnabled = false
+        
         let refStorage = Storage.storage().reference().child("posts").child(filename)
         refStorage.putData(uploadedData, metadata: nil) { (metaData, err) in
             if let err = err {
@@ -62,6 +64,8 @@ class SharePhotoController: UIViewController {
                     print("Failed to download imageUrl:", err)
                     return
                 }
+
+                self.navigationItem.rightBarButtonItem?.isEnabled = true
                guard let imageUrl = url?.absoluteString
                 else { return }
                  print("Successfully store share image:", imageUrl)
@@ -76,8 +80,6 @@ class SharePhotoController: UIViewController {
         
         guard let postImage = selectedImage else { return }
         
-        navigationItem.rightBarButtonItem?.isEnabled = false
-        
         guard let caption = containerView.commentTextView.text, caption.count > 0 else { return }
         guard let uid = Auth.auth().currentUser?.uid else { return }
         let userPostsRef = Database.database().reference().child("posts").child(uid)
@@ -85,7 +87,6 @@ class SharePhotoController: UIViewController {
         let values: [String: Any] = ["imageUrl": imageUrl, "caption": caption, "imageHeight": postImage.size.height, "imageWidth": postImage.size.width, "creationDate:": Date().timeIntervalSince1970]
         
         ref.updateChildValues(values) { (err, ref) in
-            self.navigationItem.rightBarButtonItem?.isEnabled = true
             if let err = err {
                 print("Failed to save posts to DB:", err)
                 return

@@ -21,6 +21,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         collectionView.register(HomePostCell.self, forCellWithReuseIdentifier: cellId)
         
+        collectionView.alwaysBounceVertical = true
+        
         setupNavigationItems()
         
         fetchPosts()
@@ -48,7 +50,6 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     fileprivate func fetchPostsWithUser(_ user: User) {
-      
         
         let ref = Database.database().reference().child("posts").child(user.uid)
         
@@ -64,7 +65,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
                 self.posts.append(post)
             }
             
-            self.collectionView.reloadData()
+                 self.collectionView.reloadData()
             
         }) { (err) in
             print("failed to fetch user:", err)
