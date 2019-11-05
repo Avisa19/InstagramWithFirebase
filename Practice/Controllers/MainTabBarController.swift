@@ -84,8 +84,8 @@ class MainTabBarController: UITabBarController {
         
         let viewController = rootViewController
         let navController = UINavigationController(rootViewController: viewController)
-        navController.tabBarItem.image = selectedImage.withRenderingMode(.alwaysOriginal)
-        navController.tabBarItem.selectedImage = unSelectedImage
+        navController.tabBarItem.image = unSelectedImage.withRenderingMode(.alwaysOriginal)
+        navController.tabBarItem.selectedImage = selectedImage.withRenderingMode(.alwaysOriginal)
         
         return navController
     }

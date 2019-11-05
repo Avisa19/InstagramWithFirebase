@@ -64,11 +64,14 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     fileprivate func setupNavigationItems() {
-        navigationController?.navigationBar.isTranslucent = false
-        //        let image = UIImageView(image: #imageLiteral(resourceName: "profile"))
-        //        navigationItem.titleView = image
+       
+        navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "icons8-instagram_new").withRenderingMode(.alwaysOriginal))
         
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icons8-slr_camera").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleCamera))
         
+    }
+    
+    @objc fileprivate func handleCamera() {
         
     }
     
