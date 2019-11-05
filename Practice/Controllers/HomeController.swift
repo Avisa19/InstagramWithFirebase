@@ -73,6 +73,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     @objc fileprivate func handleCamera() {
         
+        let cameraController = CameraController()
+        present(cameraController, animated: true, completion: nil)
     }
     
     

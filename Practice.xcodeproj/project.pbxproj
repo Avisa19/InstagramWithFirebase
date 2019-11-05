@@ -24,6 +24,8 @@
 		8B46C2B4236AB58100CDA5B7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B46C2B3236AB58100CDA5B7 /* User.swift */; };
 		8B46C2B6236AEC4200CDA5B7 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B46C2B5236AEC4200CDA5B7 /* LoginController.swift */; };
 		8B46C2B8236AF18700CDA5B7 /* LoginContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B46C2B7236AF18700CDA5B7 /* LoginContainerView.swift */; };
+		8B4763E62371661E00169C50 /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4763E52371661E00169C50 /* CameraController.swift */; };
+		8B4763E82371668000169C50 /* CameraContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4763E72371668000169C50 /* CameraContainerView.swift */; };
 		8B481063236964A000BCF533 /* SignupContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B481062236964A000BCF533 /* SignupContainerView.swift */; };
 		8B48106523696BD300BCF533 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8B48106423696BD300BCF533 /* GoogleService-Info.plist */; };
 		8B481069236971B000BCF533 /* SignupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B481068236971B000BCF533 /* SignupController.swift */; };
@@ -64,6 +66,8 @@
 		8B46C2B3236AB58100CDA5B7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8B46C2B5236AEC4200CDA5B7 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		8B46C2B7236AF18700CDA5B7 /* LoginContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginContainerView.swift; sourceTree = "<group>"; };
+		8B4763E52371661E00169C50 /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
+		8B4763E72371668000169C50 /* CameraContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraContainerView.swift; sourceTree = "<group>"; };
 		8B481062236964A000BCF533 /* SignupContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupContainerView.swift; sourceTree = "<group>"; };
 		8B48106423696BD300BCF533 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8B481068236971B000BCF533 /* SignupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupController.swift; sourceTree = "<group>"; };
@@ -173,6 +177,7 @@
 				8B4A24E9236FFDAD00C392D8 /* UserProfileHeaderContainerView.swift */,
 				8B4A24EC236FFF7800C392D8 /* HomePostView.swift */,
 				8B4A24EE237005FF00C392D8 /* SearchCellView.swift */,
+				8B4763E72371668000169C50 /* CameraContainerView.swift */,
 				8B4A24EB236FFF2000C392D8 /* Cells */,
 			);
 			path = Views;
@@ -190,6 +195,7 @@
 				8B4596B5236C00CB00F18DC3 /* HeartController.swift */,
 				8B4596B7236C14E400F18DC3 /* PhotoselectorController.swift */,
 				8B990BCE236C8EC5006B46F9 /* SharePhotoController.swift */,
+				8B4763E52371661E00169C50 /* CameraController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -336,6 +342,7 @@
 				8B3F00E82369585F00FDD48E /* AppDelegate.swift in Sources */,
 				8B4A24ED236FFF7800C392D8 /* HomePostView.swift in Sources */,
 				8B4F8F692369C24700AB3EA9 /* MainTabBarController.swift in Sources */,
+				8B4763E62371661E00169C50 /* CameraController.swift in Sources */,
 				8B4596B2236BFF7E00F18DC3 /* SearchController.swift in Sources */,
 				8B46C2B1236AA7F000CDA5B7 /* UserProfileHeader.swift in Sources */,
 				8B3F00FC2369592600FDD48E /* Extensions+UIView.swift in Sources */,
@@ -357,6 +364,7 @@
 				8B4596BA236C297F00F18DC3 /* PhotoSelectorCell.swift in Sources */,
 				8B46C2B8236AF18700CDA5B7 /* LoginContainerView.swift in Sources */,
 				8B46C2B6236AEC4200CDA5B7 /* LoginController.swift in Sources */,
+				8B4763E82371668000169C50 /* CameraContainerView.swift in Sources */,
 				8B4ADA77236D92F300CE06C6 /* Post.swift in Sources */,
 				8BF7FBF423701352003A5756 /* TimeAgoDisplay.swift in Sources */,
 				8B8AA0DD236DAE7900799610 /* HomePostCell.swift in Sources */,
