@@ -23,10 +23,10 @@ class CameraContainerView: UIView {
         button.addTarget(self, action: #selector(CameraController.handleDismiss), for: .touchUpInside)
         return button
     }()
+  
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         
         addSubview(captureButton)
         captureButton.anchor(top: nil, leading: nil, bottom: self.safeAreaLayoutGuide.bottomAnchor, trailing: nil, padding: .init(top: 0, left: 0, bottom: 24, right: 0), size: .init(width: 50, height: 50))

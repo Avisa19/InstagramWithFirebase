@@ -16,10 +16,12 @@ class CameraController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupCapturingPhoto()
         
         view.addSubview(cameraView)
+        
         cameraView.fillSuperview()
-        setupCapturingPhoto()
+        
     }
     
     @objc func handleCapturing() {
