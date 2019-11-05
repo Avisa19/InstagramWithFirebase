@@ -16,10 +16,14 @@ class CameraController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         view.addSubview(cameraView)
         cameraView.fillSuperview()
-        
         setupCapturingPhoto()
+    }
+    
+    @objc func handleCapturing() {
+        print("capturing...")
     }
     
     @objc func handleDismiss() {
@@ -49,7 +53,7 @@ class CameraController: UIViewController {
         
         //2. outputs
         
-        let output = AVCapturePhotoOutput()
+         let output = AVCapturePhotoOutput()
         if captureSession.canAddOutput(output) {
             captureSession.addOutput(output)
         }
