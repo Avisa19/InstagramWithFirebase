@@ -16,12 +16,15 @@ class CameraController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .systemGray
-        
         view.addSubview(cameraView)
         cameraView.fillSuperview()
         
         setupCapturingPhoto()
+    }
+    
+    @objc func handleDismiss() {
+        
+        dismiss(animated: true, completion: nil)
     }
     
     fileprivate func setupCapturingPhoto() {
