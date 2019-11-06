@@ -9,6 +9,27 @@
 import UIKit
 import AVFoundation
 
+extension CameraController: AVCapturePhotoCaptureDelegate {
+    
+    @objc func handleCapturing() {
+      
+          let settings = AVCapturePhotoSettings()
+          
+          output.capturePhoto(with: settings, delegate: self)
+      }
+    
+    func photoOutput(_ captureOutput: AVCapturePhotoOutput, didFinishProcessingPhoto photoSampleBuffer: CMSampleBuffer?, previewPhoto previewPhotoSampleBuffer: CMSampleBuffer?, resolvedSettings: AVCaptureResolvedPhotoSettings, bracketSettings: AVCaptureBracketedStillImageSettings?, error: Error?) {
+        
+        if let error = error {
+            print("Capture failed: \(error.localizedDescription)")
+        }
+
+    
+        
+        
+    }
+}
+
 class CameraController: UIViewController {
     
     let cameraView = CameraContainerView()
@@ -24,14 +45,13 @@ class CameraController: UIViewController {
         
     }
     
-    @objc func handleCapturing() {
-        print("capturing...")
-    }
     
     @objc func handleDismiss() {
         
         dismiss(animated: true, completion: nil)
     }
+    
+     let output = AVCapturePhotoOutput()
     
     fileprivate func setupCapturingPhoto() {
         
@@ -55,7 +75,6 @@ class CameraController: UIViewController {
         
         //2. outputs
         
-         let output = AVCapturePhotoOutput()
         if captureSession.canAddOutput(output) {
             captureSession.addOutput(output)
         }
