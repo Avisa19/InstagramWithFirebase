@@ -12,20 +12,31 @@ import AVFoundation
 extension CameraController: AVCapturePhotoCaptureDelegate {
     
     @objc func handleCapturing() {
-      
-          let settings = AVCapturePhotoSettings()
-          
-          output.capturePhoto(with: settings, delegate: self)
-      }
+        
+        let settings = AVCapturePhotoSettings()
+        
+        #if (!arch(x86_64))
+        guard let previewFormatType = settings.availablePreviewPhotoPixelFormatTypes.first else { return }
+        
+        settings.previewPhotoFormat = [kCVPixelBufferPixelFormatTypeKey as String: previewFormatType]
+        
+        output.capturePhoto(with: settings, delegate: self)
+        #endif
+    }
     
     func photoOutput(_ captureOutput: AVCapturePhotoOutput, didFinishProcessingPhoto photoSampleBuffer: CMSampleBuffer?, previewPhoto previewPhotoSampleBuffer: CMSampleBuffer?, resolvedSettings: AVCaptureResolvedPhotoSettings, bracketSettings: AVCaptureBracketedStillImageSettings?, error: Error?) {
         
-        if let error = error {
-            print("Capture failed: \(error.localizedDescription)")
-        }
-
-    
+        let imageData = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: photoSampleBuffer!, previewPhotoSampleBuffer: previewPhotoSampleBuffer!)
         
+        let previewImage = UIImage(data: imageData!)
+        
+        
+        let previewImageView = UIImageView(image: previewImage)
+        view.addSubview(previewImageView)
+        view.fillSuperview()
+        
+        
+        print("Finish processing photo sample buffer...")
         
     }
 }

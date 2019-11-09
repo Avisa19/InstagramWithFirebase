@@ -86,9 +86,15 @@ class UserProfileHeaderContainerView: UIView {
             button.clipsToBounds = true
             return button
         }()
-        
-        override init(frame: CGRect) {
-            super.init(frame: frame)
+    
+    let dividerLine: UIView = {
+        let view = UIView()
+        view.backgroundColor = .darkGray
+        return view
+    }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
             
             backgroundColor = .white
             addSubview(profileImageView)
@@ -123,6 +129,9 @@ class UserProfileHeaderContainerView: UIView {
             
             addSubview(seperatorLine)
             seperatorLine.anchor(top: nil, leading: leadingAnchor, bottom: stackView.topAnchor, trailing: trailingAnchor, padding: .zero, size: .init(width: self.frame.width, height: 0.5))
+            
+            addSubview(dividerLine)
+            dividerLine.anchor(top: stackView.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .zero, size: .init(width: frame.width, height: 0.5))
             
         }
         
