@@ -42,6 +42,8 @@ class SignupController: UIViewController {
             guard let image = self.signupView.plusPhotoButton.imageView?.image else { return }
             guard let uploadData = image.jpegData(compressionQuality: 0.3) else { return }
             
+            guard let fcmToken = Messaging.messaging().fcmToken else { return }
+            
             let fileName = NSUUID().uuidString
             
             let storageRef = Storage.storage().reference().child("profile_Image").child(fileName)
@@ -61,7 +63,7 @@ class SignupController: UIViewController {
                     }
                     guard let profileImageUrl = url?.absoluteString else { return }
                     
-                    let usernameValues = ["username": username, "profileImageUrl": profileImageUrl]
+                    let usernameValues = ["username": username, "profileImageUrl": profileImageUrl, "fcmToken": fcmToken]
                     
                     let dictionaryValues = [uid: usernameValues]
                     

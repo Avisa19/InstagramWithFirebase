@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>1044876100401-g2csfsepgsh3ifbc4jilqi696c93mbba.apps.googleusercontent.com</string>
+	<string>1044876100401-11hep0lc5s16rijs0vvjgsl940r1v9aj.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.1044876100401-g2csfsepgsh3ifbc4jilqi696c93mbba</string>
+	<string>com.googleusercontent.apps.1044876100401-11hep0lc5s16rijs0vvjgsl940r1v9aj</string>
 	<key>API_KEY</key>
 	<string>AIzaSyDIYVCCXsLYSh1bz7fRonswW1twEJdEh8s</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.AvisaPoshtkouhi.Practice</string>
+	<string>com.AvisaPoshtkouhi.PracticeAvisa</string>
 	<key>PROJECT_ID</key>
 	<string>practice-28266</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1044876100401:ios:d93bbf03b8fd9bc3fca610</string>
+	<string>1:1044876100401:ios:0b11e7b91ac47913fca610</string>
 	<key>DATABASE_URL</key>
 	<string>https://practice-28266.firebaseio.com</string>
 </dict>
