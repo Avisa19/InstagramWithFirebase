@@ -12,13 +12,8 @@ import Firebase
 
 private let cellId = "Cell"
 
-class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
-    fileprivate func fetchAllPosts() {
-        fetchPosts()
-        
-        fetchFollowingUserUid()
-    }
+class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     
     override func viewDidLoad() {
@@ -38,6 +33,12 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         setupRefresherControll()
     }
+    
+    fileprivate func fetchAllPosts() {
+          fetchPosts()
+          
+          fetchFollowingUserUid()
+      }
     
     func setupNotification() {
         
@@ -165,9 +166,26 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! HomePostCell
         
-        cell.post = posts[indexPath.item]
+        cell.homePostView.post = posts[indexPath.item]
+        
+        cell.homePostView.delegate = self
         
         return cell
     }
+    
+}
 
+extension HomeController: HomePostCellDelegate {
+    
+    func didTapComment(post: Post) {
+        
+        let commentController = CommentController(collectionViewLayout: UICollectionViewFlowLayout())
+        navigationController?.pushViewController(commentController, animated: true)
+        
+        
+        print(post.caption)
+        
+    }
+    
+    
 }
