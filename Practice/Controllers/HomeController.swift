@@ -67,9 +67,9 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         navigationController?.navigationBar.isTranslucent = false
        
-        navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "icons8-instagram_new").withRenderingMode(.alwaysOriginal))
+        navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "instagram").withRenderingMode(.alwaysOriginal))
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icons8-slr_camera").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleCamera))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "camers").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleCamera))
         
     }
     

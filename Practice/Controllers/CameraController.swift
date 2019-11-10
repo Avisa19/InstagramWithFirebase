@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import Photos
 
 extension CameraController: AVCapturePhotoCaptureDelegate {
     
@@ -29,21 +30,52 @@ extension CameraController: AVCapturePhotoCaptureDelegate {
         let imageData = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: photoSampleBuffer!, previewPhotoSampleBuffer: previewPhotoSampleBuffer!)
         
         let previewImage = UIImage(data: imageData!)
+    
         
-        
-        let previewImageView = UIImageView(image: previewImage)
-        view.addSubview(previewImageView)
-        view.fillSuperview()
-        
+        view.addSubview(previewContainerView)
+        previewContainerView.fillSuperview()
+       
+        previewContainerView.previewPhotoImageView.image = previewImage
         
         print("Finish processing photo sample buffer...")
         
+    }
+    
+    @objc func handleSavePhoto() {
+    
+        print("Attempting to save Photo...")
+        
+        guard let previewImage = previewContainerView.previewPhotoImageView.image else { return }
+        
+        let library = PHPhotoLibrary.shared()
+        
+        library.performChanges({
+            
+            PHAssetChangeRequest.creationRequestForAsset(from: previewImage)
+            
+        }) { (success, err) in
+            if let err = err {
+                print("Failed to save photos:", err)
+                return
+            }
+            print("Successfully saved image to library.")
+            DispatchQueue.main.async {
+                self.previewContainerView.setupSavedLabel()
+            }
+        }
+    }
+    
+    @objc func handleCancel() {
+        
+        previewContainerView.removeFromSuperview()
     }
 }
 
 class CameraController: UIViewController {
     
     let cameraView = CameraContainerView()
+    
+    let previewContainerView = PreviewPhotoContainerView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +86,10 @@ class CameraController: UIViewController {
         
         cameraView.fillSuperview()
         
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
     }
     
     

@@ -40,6 +40,7 @@
 		8B8AA0DD236DAE7900799610 /* HomePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8AA0DC236DAE7900799610 /* HomePostCell.swift */; };
 		8B990BCF236C8EC5006B46F9 /* SharePhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B990BCE236C8EC5006B46F9 /* SharePhotoController.swift */; };
 		8BB243AA23765C6E009A1FF7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BB243A923765C6E009A1FF7 /* GoogleService-Info.plist */; };
+		8BB243AC2376C2D4009A1FF7 /* PreviewPhotoContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB243AB2376C2D4009A1FF7 /* PreviewPhotoContainerView.swift */; };
 		8BF43532236EDDDB00A4AB4D /* FirebaseUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF43531236EDDDB00A4AB4D /* FirebaseUtils.swift */; };
 		8BF43534236EE28A00A4AB4D /* SearchContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF43533236EE28A00A4AB4D /* SearchContainerView.swift */; };
 		8BF43536236EE67A00A4AB4D /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF43535236EE67A00A4AB4D /* SearchCell.swift */; };
@@ -83,6 +84,7 @@
 		8B8AA0DC236DAE7900799610 /* HomePostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePostCell.swift; sourceTree = "<group>"; };
 		8B990BCE236C8EC5006B46F9 /* SharePhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePhotoController.swift; sourceTree = "<group>"; };
 		8BB243A923765C6E009A1FF7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8BB243AB2376C2D4009A1FF7 /* PreviewPhotoContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewPhotoContainerView.swift; sourceTree = "<group>"; };
 		8BF43531236EDDDB00A4AB4D /* FirebaseUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUtils.swift; sourceTree = "<group>"; };
 		8BF43533236EE28A00A4AB4D /* SearchContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchContainerView.swift; sourceTree = "<group>"; };
 		8BF43535236EE67A00A4AB4D /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				8B4A24EC236FFF7800C392D8 /* HomePostView.swift */,
 				8B4A24EE237005FF00C392D8 /* SearchCellView.swift */,
 				8B4763E72371668000169C50 /* CameraContainerView.swift */,
+				8BB243AB2376C2D4009A1FF7 /* PreviewPhotoContainerView.swift */,
 				8B4A24EB236FFF2000C392D8 /* Cells */,
 			);
 			path = Views;
@@ -344,6 +347,7 @@
 				8B3F00E82369585F00FDD48E /* AppDelegate.swift in Sources */,
 				8B4A24ED236FFF7800C392D8 /* HomePostView.swift in Sources */,
 				8B4F8F692369C24700AB3EA9 /* MainTabBarController.swift in Sources */,
+				8BB243AC2376C2D4009A1FF7 /* PreviewPhotoContainerView.swift in Sources */,
 				8B4763E62371661E00169C50 /* CameraController.swift in Sources */,
 				8B4596B2236BFF7E00F18DC3 /* SearchController.swift in Sources */,
 				8B46C2B1236AA7F000CDA5B7 /* UserProfileHeader.swift in Sources */,

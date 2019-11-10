@@ -12,14 +12,14 @@ class CameraContainerView: UIView {
  
     let captureButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(#imageLiteral(resourceName: "icons8-circled").withRenderingMode(.alwaysOriginal), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "circle").withRenderingMode(.alwaysOriginal), for: .normal)
         button.addTarget(self, action: #selector(CameraController.handleCapturing), for: .touchUpInside)
         return button
     }()
     
     let dismissButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(#imageLiteral(resourceName: "icons8-right").withRenderingMode(.alwaysOriginal), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "right").withRenderingMode(.alwaysOriginal), for: .normal)
         button.addTarget(self, action: #selector(CameraController.handleDismiss), for: .touchUpInside)
         return button
     }()
