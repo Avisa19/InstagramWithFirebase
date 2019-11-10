@@ -28,6 +28,8 @@
 		8B4763E82371668000169C50 /* CameraContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4763E72371668000169C50 /* CameraContainerView.swift */; };
 		8B481063236964A000BCF533 /* SignupContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B481062236964A000BCF533 /* SignupContainerView.swift */; };
 		8B481069236971B000BCF533 /* SignupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B481068236971B000BCF533 /* SignupController.swift */; };
+		8B48992F2377DC3900CC7BEE /* CustomAnimationPresentor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B48992E2377DC3900CC7BEE /* CustomAnimationPresentor.swift */; };
+		8B4899312377F40500CC7BEE /* CustomAnimationdismisser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4899302377F40500CC7BEE /* CustomAnimationdismisser.swift */; };
 		8B4A24EA236FFDAD00C392D8 /* UserProfileHeaderContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4A24E9236FFDAD00C392D8 /* UserProfileHeaderContainerView.swift */; };
 		8B4A24ED236FFF7800C392D8 /* HomePostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4A24EC236FFF7800C392D8 /* HomePostView.swift */; };
 		8B4A24EF237005FF00C392D8 /* SearchCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4A24EE237005FF00C392D8 /* SearchCellView.swift */; };
@@ -71,6 +73,8 @@
 		8B4763E72371668000169C50 /* CameraContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraContainerView.swift; sourceTree = "<group>"; };
 		8B481062236964A000BCF533 /* SignupContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupContainerView.swift; sourceTree = "<group>"; };
 		8B481068236971B000BCF533 /* SignupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupController.swift; sourceTree = "<group>"; };
+		8B48992E2377DC3900CC7BEE /* CustomAnimationPresentor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnimationPresentor.swift; sourceTree = "<group>"; };
+		8B4899302377F40500CC7BEE /* CustomAnimationdismisser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnimationdismisser.swift; sourceTree = "<group>"; };
 		8B4A24E9236FFDAD00C392D8 /* UserProfileHeaderContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileHeaderContainerView.swift; sourceTree = "<group>"; };
 		8B4A24EC236FFF7800C392D8 /* HomePostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePostView.swift; sourceTree = "<group>"; };
 		8B4A24EE237005FF00C392D8 /* SearchCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCellView.swift; sourceTree = "<group>"; };
@@ -183,6 +187,8 @@
 				8B4A24EE237005FF00C392D8 /* SearchCellView.swift */,
 				8B4763E72371668000169C50 /* CameraContainerView.swift */,
 				8BB243AB2376C2D4009A1FF7 /* PreviewPhotoContainerView.swift */,
+				8B48992E2377DC3900CC7BEE /* CustomAnimationPresentor.swift */,
+				8B4899302377F40500CC7BEE /* CustomAnimationdismisser.swift */,
 				8B4A24EB236FFF2000C392D8 /* Cells */,
 			);
 			path = Views;
@@ -368,10 +374,12 @@
 				8B3F00EA2369585F00FDD48E /* SceneDelegate.swift in Sources */,
 				8B8AA0D9236D9B5200799610 /* UserProfileCell.swift in Sources */,
 				8B4596BA236C297F00F18DC3 /* PhotoSelectorCell.swift in Sources */,
+				8B48992F2377DC3900CC7BEE /* CustomAnimationPresentor.swift in Sources */,
 				8B46C2B8236AF18700CDA5B7 /* LoginContainerView.swift in Sources */,
 				8B46C2B6236AEC4200CDA5B7 /* LoginController.swift in Sources */,
 				8B4763E82371668000169C50 /* CameraContainerView.swift in Sources */,
 				8B4ADA77236D92F300CE06C6 /* Post.swift in Sources */,
+				8B4899312377F40500CC7BEE /* CustomAnimationdismisser.swift in Sources */,
 				8BF7FBF423701352003A5756 /* TimeAgoDisplay.swift in Sources */,
 				8B8AA0DD236DAE7900799610 /* HomePostCell.swift in Sources */,
 				8BF43534236EE28A00A4AB4D /* SearchContainerView.swift in Sources */,

@@ -34,6 +34,7 @@ class CameraContainerView: UIView {
         
         addSubview(dismissButton)
         dismissButton.anchor(top: self.topAnchor, leading: nil, bottom: nil, trailing: self.trailingAnchor, padding: .init(top: 12, left: 0, bottom: 0, right: 12), size: .init(width: 50, height: 50))
+        
     }
     
     required init?(coder: NSCoder) {

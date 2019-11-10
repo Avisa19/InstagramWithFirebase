@@ -77,6 +77,10 @@ class CameraController: UIViewController {
     
     let previewContainerView = PreviewPhotoContainerView()
     
+    let customAnimationPresentor = CustomAnimationPresentor()
+    
+    let customAnimationDismisser = CustomAnimationDismisser()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -85,6 +89,8 @@ class CameraController: UIViewController {
         view.addSubview(cameraView)
         
         cameraView.fillSuperview()
+        
+        transitioningDelegate = self
         
     }
     
@@ -133,7 +139,22 @@ class CameraController: UIViewController {
         
         captureSession.startRunning()
     }
-
+    
    
+}
 
+
+extension CameraController: UIViewControllerTransitioningDelegate {
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        return customAnimationPresentor
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+
+        return customAnimationDismisser
+    }
+    
+   
 }
