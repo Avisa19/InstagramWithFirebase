@@ -8,46 +8,45 @@
 
 import UIKit
 
-private let commentCell = "commentCell"
-
 class CommentController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: commentCell)
+        
+        navigationItem.title = "Comments"
         
         collectionView.backgroundColor = .systemBlue
-        
-        collectionView.alwaysBounceVertical = true
 
-        // Do any additional setup after loading the view.
-    }
-
- 
-
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 5
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        return CGSize(width: view.frame.width, height: 50)
+        tabBarController?.tabBar.isHidden = true
     }
 
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: commentCell, for: indexPath)
-    
-        // Configure the cell
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         
-        cell.backgroundColor = .systemPink
-    
-        return cell
+        tabBarController?.tabBar.isHidden = false
     }
-
-  
-
+    
+    let containerView: InputAccessoryContainerView = {
+        let cView = InputAccessoryContainerView()
+        cView.frame = CGRect(x: 0, y: 0, width: 100, height: 50)
+        return cView
+    }()
+    
+    // For write something like textField
+    // It's activate when you define cView outside and call it in this closure, UIView should be global not just limited and trapped in ⬇️
+    override var inputAccessoryView: UIView? {
+        get {
+            return containerView
+        }
+    }
+    
+    override var canBecomeFirstResponder: Bool {
+        return true
+    }
+    
 }

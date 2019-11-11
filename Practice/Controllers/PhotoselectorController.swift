@@ -47,7 +47,7 @@ class PhotoselectorController: UICollectionViewController, UICollectionViewDeleg
     
     fileprivate func assetsFetchOptions() -> PHFetchOptions {
         let fetchOptions = PHFetchOptions()
-              fetchOptions.fetchLimit = 10
+              fetchOptions.fetchLimit = 30
               let sortDescriptor = NSSortDescriptor(key: "creationDate", ascending: false)
               fetchOptions.sortDescriptors = [sortDescriptor]
         return fetchOptions
@@ -112,6 +112,9 @@ class PhotoselectorController: UICollectionViewController, UICollectionViewDeleg
         sharePhotoController.selectedImage = header?.photoHeader.image
         navigationController?.pushViewController(sharePhotoController, animated: true)
     }
+    
+    // All the main tranferring data is through MainViewControllers
+    // All the main Activities happens in MainVC, including Cell, Header, we should make it general . so we can pass to another MainVC
     
     var header: PhotoSelectorHeader?
     

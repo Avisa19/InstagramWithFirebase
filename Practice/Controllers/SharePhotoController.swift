@@ -75,7 +75,8 @@ class SharePhotoController: UIViewController {
         }
         
     }
-   static let newsFeedNotification = NSNotification.Name("NewsFeed")
+    
+    static let newsFeedNotification = NSNotification.Name("NewsFeed")
     
     fileprivate func saveToDatabaseWithImageUrl(imageUrl: String) {
         
