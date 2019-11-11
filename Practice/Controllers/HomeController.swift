@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 
-private let cellId = "Cell"
+private let homeCellId = "HomeCell"
 
 
 class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
@@ -23,7 +23,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
 
         collectionView.backgroundColor = .white
         
-        collectionView.register(HomePostCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView.register(HomePostCell.self, forCellWithReuseIdentifier: homeCellId)
         
         collectionView.alwaysBounceVertical = true
         
@@ -35,7 +35,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     fileprivate func fetchAllPosts() {
-          fetchPosts()
+//          fetchPosts()
           
           fetchFollowingUserUid()
       }
@@ -110,6 +110,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
           guard let uid = Auth.auth().currentUser?.uid else { return }
         
         Database.fetchUserWithUid(uid: uid) { (user) in
+            
             self.fetchPostsWithUser(user)
         }
         
@@ -127,7 +128,10 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
                 
                 guard let postDictionary = value as? [String: Any] else { return }
                 
-                let post = Post(user: user, dictionary: postDictionary)
+                var post = Post(user: user, dictionary: postDictionary)
+                
+                //create connection between post and comment
+                post.id = key
                 
                 self.posts.append(post)
             }
@@ -164,7 +168,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! HomePostCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: homeCellId, for: indexPath) as! HomePostCell
         
         cell.homePostView.post = posts[indexPath.item]
         
@@ -180,6 +184,8 @@ extension HomeController: HomePostCellDelegate {
     func didTapComment(post: Post) {
         
         let commentController = CommentController(collectionViewLayout: UICollectionViewFlowLayout())
+        
+        commentController.containerView.post = post
         navigationController?.pushViewController(commentController, animated: true)
         
         
