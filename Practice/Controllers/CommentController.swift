@@ -57,23 +57,28 @@ class CommentController: UICollectionViewController, UICollectionViewDelegateFlo
         tabBarController?.tabBar.isHidden = false
     }
     
-   fileprivate func fetchComment() {
-                  print("Attemoting to fetch comments...")
-                         guard let postId = post?.id else { return }
-                         
-                         let ref = Database.database().reference().child("comments").child(postId)
-                         ref.observe(.childAdded, with: { (snapshot) in
-                          print(snapshot.value as Any)
-                           guard let dictionary = snapshot.value as? [String: Any] else { return }
-                           let comment = Comment(dictionary: dictionary)
-                           self.comments.append(comment)
-                           self.collectionView.reloadData()
-                           
-                         }) { (err) in
-                           print("Failed to fetch comments")
-           }
-           
-       }
+    fileprivate func fetchComment() {
+        print("Attemoting to fetch comments...")
+        guard let postId = post?.id else { return }
+        
+        let ref = Database.database().reference().child("comments").child(postId)
+        ref.observe(.childAdded, with: { (snapshot) in
+        print(snapshot.value as Any)
+        guard let dictionary = snapshot.value as? [String: Any] else { return }
+            guard let uid = dictionary["uid"] as? String else { return }
+            Database.fetchUserWithUid(uid: uid) { (user) in
+                
+                var comment = Comment(dictionary: dictionary)
+                comment.user = user
+                self.comments.append(comment)
+                self.collectionView.reloadData()
+            }
+            
+        }) { (err) in
+            print("Failed to fetch comments")
+        }
+        
+    }
 
 
     
@@ -88,7 +93,6 @@ class CommentController: UICollectionViewController, UICollectionViewDelegateFlo
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: commentCellId, for: indexPath) as! CommentCell
         
-        cell.backgroundColor = .systemPink
         cell.comment = comments[indexPath.item]
         
         return cell

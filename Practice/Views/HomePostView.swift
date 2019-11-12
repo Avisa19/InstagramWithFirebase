@@ -161,7 +161,7 @@ class HomePostView: UIView {
     }
     
     @objc func handleComment() {
-        
+        // Activate the protocol
         guard let post = post else { return }
         delegate?.didTapComment(post: post)
     }

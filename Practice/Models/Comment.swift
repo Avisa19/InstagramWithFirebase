@@ -10,6 +10,8 @@ import Foundation
 
 struct Comment {
     
+    var user: User?
+    
     let text: String
     let uid: String
     
