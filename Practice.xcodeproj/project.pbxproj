@@ -14,6 +14,7 @@
 		8B3F00F12369586300FDD48E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B3F00F02369586300FDD48E /* Assets.xcassets */; };
 		8B3F00F42369586300FDD48E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B3F00F22369586300FDD48E /* LaunchScreen.storyboard */; };
 		8B3F00FC2369592600FDD48E /* Extensions+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3F00FB2369592600FDD48E /* Extensions+UIView.swift */; };
+		8B408631237A875B00A06C89 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B408630237A875B00A06C89 /* Comment.swift */; };
 		8B4596B0236BFE7800F18DC3 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4596AF236BFE7800F18DC3 /* HomeController.swift */; };
 		8B4596B2236BFF7E00F18DC3 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4596B1236BFF7E00F18DC3 /* SearchController.swift */; };
 		8B4596B6236C00CB00F18DC3 /* HeartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4596B5236C00CB00F18DC3 /* HeartController.swift */; };
@@ -39,6 +40,7 @@
 		8B4F8F692369C24700AB3EA9 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4F8F682369C24700AB3EA9 /* MainTabBarController.swift */; };
 		8B4F8F6B2369C3E600AB3EA9 /* UserProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4F8F6A2369C3E600AB3EA9 /* UserProfileController.swift */; };
 		8B679A372379341F00DDF69E /* InputAccessoryContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B679A362379341F00DDF69E /* InputAccessoryContainerView.swift */; };
+		8B679A3923797D3E00DDF69E /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B679A3823797D3E00DDF69E /* CommentCell.swift */; };
 		8B8AA0D9236D9B5200799610 /* UserProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8AA0D8236D9B5200799610 /* UserProfileCell.swift */; };
 		8B8AA0DB236DA41600799610 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8AA0DA236DA41600799610 /* CustomImageView.swift */; };
 		8B8AA0DD236DAE7900799610 /* HomePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8AA0DC236DAE7900799610 /* HomePostCell.swift */; };
@@ -61,6 +63,7 @@
 		8B3F00F32369586300FDD48E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8B3F00F52369586300FDD48E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B3F00FB2369592600FDD48E /* Extensions+UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extensions+UIView.swift"; sourceTree = "<group>"; };
+		8B408630237A875B00A06C89 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		8B4596AF236BFE7800F18DC3 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		8B4596B1236BFF7E00F18DC3 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		8B4596B5236C00CB00F18DC3 /* HeartController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartController.swift; sourceTree = "<group>"; };
@@ -87,6 +90,7 @@
 		8B4F8F6A2369C3E600AB3EA9 /* UserProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileController.swift; sourceTree = "<group>"; };
 		8B5390932372C0E300F53C8A /* Practice.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Practice.entitlements; sourceTree = "<group>"; };
 		8B679A362379341F00DDF69E /* InputAccessoryContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputAccessoryContainerView.swift; sourceTree = "<group>"; };
+		8B679A3823797D3E00DDF69E /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		8B8AA0D8236D9B5200799610 /* UserProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileCell.swift; sourceTree = "<group>"; };
 		8B8AA0DA236DA41600799610 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		8B8AA0DC236DAE7900799610 /* HomePostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePostCell.swift; sourceTree = "<group>"; };
@@ -164,6 +168,7 @@
 			children = (
 				8B46C2B3236AB58100CDA5B7 /* User.swift */,
 				8B4ADA76236D92F300CE06C6 /* Post.swift */,
+				8B408630237A875B00A06C89 /* Comment.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -226,6 +231,7 @@
 				8B8AA0DC236DAE7900799610 /* HomePostCell.swift */,
 				8BF43535236EE67A00A4AB4D /* SearchCell.swift */,
 				8B4596B9236C297F00F18DC3 /* PhotoSelectorCell.swift */,
+				8B679A3823797D3E00DDF69E /* CommentCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -373,6 +379,7 @@
 				8B4ADA75236D410500CE06C6 /* ShareContainerView.swift in Sources */,
 				8B48993323780C9300CC7BEE /* CommentController.swift in Sources */,
 				8BF43536236EE67A00A4AB4D /* SearchCell.swift in Sources */,
+				8B679A3923797D3E00DDF69E /* CommentCell.swift in Sources */,
 				8B4A24EF237005FF00C392D8 /* SearchCellView.swift in Sources */,
 				8B4596BC236C2E2900F18DC3 /* PhotoSelectorHeader.swift in Sources */,
 				8B4596B6236C00CB00F18DC3 /* HeartController.swift in Sources */,
@@ -387,6 +394,7 @@
 				8B46C2B6236AEC4200CDA5B7 /* LoginController.swift in Sources */,
 				8B4763E82371668000169C50 /* CameraContainerView.swift in Sources */,
 				8B4ADA77236D92F300CE06C6 /* Post.swift in Sources */,
+				8B408631237A875B00A06C89 /* Comment.swift in Sources */,
 				8B4899312377F40500CC7BEE /* CustomAnimationdismisser.swift in Sources */,
 				8BF7FBF423701352003A5756 /* TimeAgoDisplay.swift in Sources */,
 				8B8AA0DD236DAE7900799610 /* HomePostCell.swift in Sources */,

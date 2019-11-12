@@ -185,7 +185,7 @@ extension HomeController: HomePostCellDelegate {
         
         let commentController = CommentController(collectionViewLayout: UICollectionViewFlowLayout())
         
-        commentController.containerView.post = post
+        commentController.post = post
         navigationController?.pushViewController(commentController, animated: true)
         
         
