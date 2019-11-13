@@ -7,8 +7,16 @@
 //
 
 import UIKit
+import Firebase
+
+protocol UserProfileHeaderDelegate {
+    func didChangetoListView()
+    func didChangeToGridView()
+}
 
 class UserProfileHeaderContainerView: UIView {
+    
+    var delegate: UserProfileHeaderDelegate?
     
      let profileImageView: CustomImageView = {
            let imageView = CustomImageView()
@@ -19,10 +27,11 @@ class UserProfileHeaderContainerView: UIView {
             return imageView
         }()
         
-        let gridButton: UIButton = {
+        lazy var gridButton: UIButton = {
             let button = UIButton(type: .system)
             button.setImage(#imageLiteral(resourceName: "grid"), for: .normal)
              button.tintColor = UIColor(white: 0, alpha: 0.2)
+            button.addTarget(self, action: #selector(handleChangeToGridView), for: .touchUpInside)
             return button
         }()
         
@@ -33,10 +42,11 @@ class UserProfileHeaderContainerView: UIView {
               return button
           }()
         
-        let listButton: UIButton = {
+        lazy var listButton: UIButton = {
               let button = UIButton(type: .system)
               button.setImage(#imageLiteral(resourceName: "list"), for: .normal)
              button.tintColor = UIColor(white: 0, alpha: 0.08)
+            button.addTarget(self, action: #selector(handleChangeToListView), for: .touchUpInside)
               return button
           }()
         
@@ -134,10 +144,24 @@ class UserProfileHeaderContainerView: UIView {
             dividerLine.anchor(top: stackView.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .zero, size: .init(width: frame.width, height: 0.5))
             
         }
-        
-        required init?(coder: NSCoder) {
-            fatalError("init(coder:) has not been implemented")
-        }
-        
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
+    
+    @objc func handleChangeToListView() {
+        print("See in the list view ...")
+        listButton.tintColor = #colorLiteral(red: 0, green: 0.4745098039, blue: 0.8235294118, alpha: 1)
+        gridButton.tintColor = UIColor(white: 0, alpha: 0.2)
+        delegate?.didChangetoListView()
+    }
+    
+    @objc func handleChangeToGridView() {
+        print("See in the grid view ...")
+        gridButton.tintColor = #colorLiteral(red: 0, green: 0.4745098039, blue: 0.8235294118, alpha: 1)
+        listButton.tintColor = UIColor(white: 0, alpha: 0.2)
+        delegate?.didChangeToGridView()
+    }
+    
+}
 
