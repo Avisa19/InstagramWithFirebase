@@ -33,7 +33,6 @@
 		8B4899312377F40500CC7BEE /* CustomAnimationdismisser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4899302377F40500CC7BEE /* CustomAnimationdismisser.swift */; };
 		8B48993323780C9300CC7BEE /* CommentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B48993223780C9300CC7BEE /* CommentController.swift */; };
 		8B4A24EA236FFDAD00C392D8 /* UserProfileHeaderContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4A24E9236FFDAD00C392D8 /* UserProfileHeaderContainerView.swift */; };
-		8B4A24ED236FFF7800C392D8 /* HomePostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4A24EC236FFF7800C392D8 /* HomePostView.swift */; };
 		8B4A24EF237005FF00C392D8 /* SearchCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4A24EE237005FF00C392D8 /* SearchCellView.swift */; };
 		8B4ADA75236D410500CE06C6 /* ShareContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4ADA74236D410400CE06C6 /* ShareContainerView.swift */; };
 		8B4ADA77236D92F300CE06C6 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4ADA76236D92F300CE06C6 /* Post.swift */; };
@@ -82,7 +81,6 @@
 		8B4899302377F40500CC7BEE /* CustomAnimationdismisser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnimationdismisser.swift; sourceTree = "<group>"; };
 		8B48993223780C9300CC7BEE /* CommentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentController.swift; sourceTree = "<group>"; };
 		8B4A24E9236FFDAD00C392D8 /* UserProfileHeaderContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileHeaderContainerView.swift; sourceTree = "<group>"; };
-		8B4A24EC236FFF7800C392D8 /* HomePostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePostView.swift; sourceTree = "<group>"; };
 		8B4A24EE237005FF00C392D8 /* SearchCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCellView.swift; sourceTree = "<group>"; };
 		8B4ADA74236D410400CE06C6 /* ShareContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareContainerView.swift; sourceTree = "<group>"; };
 		8B4ADA76236D92F300CE06C6 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -192,7 +190,6 @@
 				8B4ADA74236D410400CE06C6 /* ShareContainerView.swift */,
 				8BF43533236EE28A00A4AB4D /* SearchContainerView.swift */,
 				8B4A24E9236FFDAD00C392D8 /* UserProfileHeaderContainerView.swift */,
-				8B4A24EC236FFF7800C392D8 /* HomePostView.swift */,
 				8B4A24EE237005FF00C392D8 /* SearchCellView.swift */,
 				8B4763E72371668000169C50 /* CameraContainerView.swift */,
 				8BB243AB2376C2D4009A1FF7 /* PreviewPhotoContainerView.swift */,
@@ -363,7 +360,6 @@
 				8BF43532236EDDDB00A4AB4D /* FirebaseUtils.swift in Sources */,
 				8B481063236964A000BCF533 /* SignupContainerView.swift in Sources */,
 				8B3F00E82369585F00FDD48E /* AppDelegate.swift in Sources */,
-				8B4A24ED236FFF7800C392D8 /* HomePostView.swift in Sources */,
 				8B4F8F692369C24700AB3EA9 /* MainTabBarController.swift in Sources */,
 				8BB243AC2376C2D4009A1FF7 /* PreviewPhotoContainerView.swift in Sources */,
 				8B4763E62371661E00169C50 /* CameraController.swift in Sources */,
