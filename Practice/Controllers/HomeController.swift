@@ -154,13 +154,19 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
+       
+        let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+        let dummyCell = HomePostCell(frame: frame)
+        dummyCell.homePostView.post = posts[indexPath.item]
+        dummyCell.layoutIfNeeded()
+        let targetSize = CGSize(width: view.frame.width, height: 1000)
+        let estimatedSize = dummyCell.systemLayoutSizeFitting(targetSize)
         var height: CGFloat = 40 + 8 + 8
         height += view.frame.width
         height += 50
         height += 60
-        
-        return CGSize(width: view.frame.width, height: height)
+        let finalHeight = max(height, estimatedSize.height)
+        return CGSize(width: view.frame.width, height: finalHeight)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

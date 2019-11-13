@@ -12,19 +12,30 @@ class CommentCell: UICollectionViewCell {
     
     var comment: Comment? {
         didSet {
-            commentLabel.text = comment?.text
             
-            guard let imageUrl = comment?.user?.profileImageUrl else { return }
+            guard let imageUrl = comment?.user.profileImageUrl else { return }
             
             profileImageView.loadImage(urlString: imageUrl)
+            
+            setupAtrributedCommentLabelText()
+            
         }
     }
     
-    let commentLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14)
-        label.numberOfLines = 0
-        return label
+    fileprivate func setupAtrributedCommentLabelText() {
+        
+        guard let username = comment?.user.username, let commentText = comment?.text else { return }
+        
+        let attributedText = NSMutableAttributedString(string: username, attributes: [.font: UIFont.systemFont(ofSize: 14, weight: .medium), .foregroundColor: UIColor.black])
+        attributedText.append(NSAttributedString(string: "  \(commentText)", attributes: [.font: UIFont.systemFont(ofSize: 14, weight: .light)]))
+        
+        commentTextView.attributedText = attributedText
+    }
+    
+    let commentTextView: UITextView = {
+        let textView = UITextView()
+        textView.isScrollEnabled = false
+        return textView
     }()
     
     let profileImageView: CustomImageView = {
@@ -35,15 +46,23 @@ class CommentCell: UICollectionViewCell {
         return imageView
     }()
     
+    let dividerView: UIView = {
+       let view = UIView()
+        view.backgroundColor = UIColor(white: 0, alpha: 0.1)
+        return view
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = UIColor(white: 0, alpha: 0.1)
+        backgroundColor = .white
         
         addSubview(profileImageView)
         profileImageView.anchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: nil, padding: .init(top: 4, left: 4, bottom: 4, right: 0), size: .init(width: 42, height: 42))
-        addSubview(commentLabel)
-        commentLabel.anchor(top: topAnchor, leading: profileImageView.trailingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, padding: .init(top: 4, left: 4, bottom: 4, right: 4))
+        addSubview(commentTextView)
+        commentTextView.anchor(top: topAnchor, leading: profileImageView.trailingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, padding: .init(top: 4, left: 4, bottom: 4, right: 4))
+        addSubview(dividerView)
+        dividerView.anchor(top: commentTextView.bottomAnchor, leading: profileImageView.trailingAnchor, bottom: nil, trailing: commentTextView.trailingAnchor, padding: .zero, size: .init(width: 0, height: 0.5))
     }
     
     required init?(coder: NSCoder) {

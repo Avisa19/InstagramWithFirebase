@@ -22,8 +22,13 @@ class CommentController: UICollectionViewController, UICollectionViewDelegateFlo
     lazy var containerView: InputAccessoryContainerView = {
           let cView = InputAccessoryContainerView()
           cView.frame = CGRect(x: 0, y: 0, width: 100, height: 50)
+          let dividerView = UIView()
+        dividerView.backgroundColor = UIColor(white: 0, alpha: 0.1)
+        cView.addSubview(dividerView)
+        dividerView.anchor(top: cView.topAnchor, leading: cView.leadingAnchor, bottom: nil, trailing: cView.trailingAnchor, padding: .zero, size: .init(width: 0, height: 0.5))
           return cView
       }()
+   
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +45,7 @@ class CommentController: UICollectionViewController, UICollectionViewDelegateFlo
         collectionView.register(CommentCell.self, forCellWithReuseIdentifier: commentCellId)
         
            fetchComment()
+
         
     }
     
@@ -64,12 +70,11 @@ class CommentController: UICollectionViewController, UICollectionViewDelegateFlo
         let ref = Database.database().reference().child("comments").child(postId)
         ref.observe(.childAdded, with: { (snapshot) in
         print(snapshot.value as Any)
-        guard let dictionary = snapshot.value as? [String: Any] else { return }
+            guard let dictionary = snapshot.value as? [String: Any] else { return }
             guard let uid = dictionary["uid"] as? String else { return }
             Database.fetchUserWithUid(uid: uid) { (user) in
                 
-                var comment = Comment(dictionary: dictionary)
-                comment.user = user
+                let comment = Comment(user: user, dictionary: dictionary)
                 self.comments.append(comment)
                 self.collectionView.reloadData()
             }
@@ -87,7 +92,19 @@ class CommentController: UICollectionViewController, UICollectionViewDelegateFlo
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 50)
+        
+        let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)
+        let dummyCell = CommentCell(frame: frame)
+        dummyCell.comment = comments[indexPath.item]
+        dummyCell.layoutIfNeeded()
+        let targetSize = CGSize(width: view.frame.width, height: 1000)
+        let estimatedSize = dummyCell.systemLayoutSizeFitting(targetSize)
+        let height = max(42 + 4 + 4, estimatedSize.height)
+        return CGSize(width: view.frame.width, height: height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
