@@ -20,15 +20,12 @@ class CommentController: UICollectionViewController, UICollectionViewDelegateFlo
     let commentCellId = "CellcommentId"
     
     lazy var containerView: InputAccessoryContainerView = {
-          let cView = InputAccessoryContainerView()
-          cView.frame = CGRect(x: 0, y: 0, width: 100, height: 50)
-          let dividerView = UIView()
-        dividerView.backgroundColor = UIColor(white: 0, alpha: 0.1)
-        cView.addSubview(dividerView)
-        dividerView.anchor(top: cView.topAnchor, leading: cView.leadingAnchor, bottom: nil, trailing: cView.trailingAnchor, padding: .zero, size: .init(width: 0, height: 0.5))
-          return cView
-      }()
-   
+        let frame = CGRect(x: 0, y: 0, width: 100, height: 50)
+        let cView = InputAccessoryContainerView(frame: frame)
+        cView.delegate = self
+        return cView
+    }()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -112,34 +109,8 @@ class CommentController: UICollectionViewController, UICollectionViewDelegateFlo
         
         cell.comment = comments[indexPath.item]
         
+        
         return cell
-    }
-    
-    
-    @objc func handleSend() {
-        
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        
-        print("post id:", self.post?.id ?? "")
-        
-        print("Inserting comment:", containerView.textField.text ?? "")
-        
-        
-        guard let postId = post?.id else { return }
-        
-        guard let commentText = containerView.textField.text else { return }
-        
-        let values: [String: Any] = ["text": commentText, "creationDate": Date().timeIntervalSince1970, "uid": uid]
-        Database.database().reference().child("comments").child(postId).childByAutoId().updateChildValues(values) { (err, ref) in
-            
-            if let err = err {
-                print("Failed to insert comment:", err)
-                return
-            }
-            
-            print("Successfully inserted comment.")
-        }
-        
     }
     
     // For write something like textField
@@ -153,5 +124,35 @@ class CommentController: UICollectionViewController, UICollectionViewDelegateFlo
     override var canBecomeFirstResponder: Bool {
         return true
     }
+    
+}
+
+// trying to create bridge
+extension CommentController: CommentInputAccessoryViewDelegate {
+    
+    func didSubmit(for comment: String) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        print("post id:", self.post?.id ?? "")
+        
+        print("Inserting comment:", comment)
+        
+        
+        guard let postId = post?.id else { return }
+        
+        let values: [String: Any] = ["text": comment, "creationDate": Date().timeIntervalSince1970, "uid": uid]
+        Database.database().reference().child("comments").child(postId).childByAutoId().updateChildValues(values) { (err, ref) in
+            
+            if let err = err {
+                print("Failed to insert comment:", err)
+                return
+            }
+            
+            print("Successfully inserted comment.")
+            self.containerView.clearCommentTextField()
+        }
+        
+    }
+    
     
 }

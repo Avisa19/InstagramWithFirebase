@@ -9,6 +9,10 @@
 import UIKit
 import Firebase
 
+// with help of protocol we can run whole bunch of codes between mainVC and it's related cells and views.
+//1. first we create connection with help of protocol and delegate, we check it with help of breakPoint,
+//2. we made different in MainVc and run it in the funcs we called it by delegate.
+
 protocol UserProfileHeaderDelegate {
     func didChangetoListView()
     func didChangeToGridView()
