@@ -11,26 +11,56 @@ import Firebase
 
 class SignupController: UIViewController {
     
-    let signupView = SignupContainerView()
+    lazy var signupView: SignupContainerView = {
+        let view = SignupContainerView()
+        view.delegate = self
+        return view
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         navigationController?.isNavigationBarHidden = true
         setupViews()
     }
     
     fileprivate func setupViews() {
         
-         view.addSubview(signupView)
-         signupView.fillSuperview()
-     }
+        view.addSubview(signupView)
+        signupView.fillSuperview()
+    }
+    
+}
 
-    @objc func handleSignup() {
-        
+extension SignupController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+         
+         if let editedImage = info[.editedImage] as? UIImage {
+             
+             signupView.plusPhotoButton.setImage(editedImage.withRenderingMode(.alwaysOriginal), for: .normal)
+             
+           } else if let originalImage = info[.originalImage] as? UIImage {
+             
+             signupView.plusPhotoButton.setImage(originalImage.withRenderingMode(.alwaysOriginal), for: .normal)
+             
+         }
+         signupView.plusPhotoButton.layer.cornerRadius = signupView.plusPhotoButton.frame.width / 2
+         signupView.plusPhotoButton.clipsToBounds = true
+         signupView.plusPhotoButton.layer.borderColor = UIColor.gray.cgColor
+         signupView.plusPhotoButton.layer.borderWidth = 3
+         dismiss(animated: true, completion: nil)
+     }
+}
+
+
+
+extension SignupController: SignupContainerViewDelegate {
+    
+    func didSignup() {
         guard let email = signupView.emailTextField.text, let password = signupView.passwordTextField.text, let username = signupView.usernameTextField.text else { return }
         guard email.count > 0, password.count > 0, username.count > 0 else { return }
-       // first Authenticate user
+        // first Authenticate user
         Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
             
             if let err = err {
@@ -67,51 +97,33 @@ class SignupController: UIViewController {
                     
                     let dictionaryValues = [uid: usernameValues]
                     
-                 // Start saving to DB
+                    // Start saving to DB
                     Database.database().reference().child("users").updateChildValues(dictionaryValues) { (err, red) in
                         if let err = err {
                             print("Failed to save to DB:", err)
                             return
                         }
-                        
-                        print("Successfully saved to Db.")
-                        // to reset & refresh the tabBar page.
-                                     let mainTabBarController = UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.rootViewController as? MainTabBarController
-
-                                   mainTabBarController?.setupViewControllers()
-                        self.dismiss(animated: true, completion: nil)
+                            
+                            print("Successfully saved to Db.")
+                            // to reset & refresh the tabBar page.
+                            let mainTabBarController = UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.rootViewController as? MainTabBarController
+                            
+                            mainTabBarController?.setupViewControllers()
+                            self.dismiss(animated: true, completion: nil)
+                        }
                     }
+                    
                 }
                 
-            }
-
         }
     }
     
-    @objc func handleInputTextChanged() {
-        
-        let isInputsValid = signupView.emailTextField.text?.count ?? 0 > 0 && signupView.passwordTextField.text?.count ?? 0 > 0 && signupView.usernameTextField.text?.count ?? 0 > 0
-        
-        if isInputsValid {
-            
-            signupView.signupButton.isEnabled = true
-            signupView.signupButton.backgroundColor = #colorLiteral(red: 0.06666666667, green: 0.5254901961, blue: 0.9294117647, alpha: 1)
-            
-        } else {
-            signupView.signupButton.isEnabled = false
-            signupView.signupButton.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
-        }
-    }
     
-    @objc func handleSignIn() {
+    func didSignin() {
         navigationController?.popViewController(animated: true)
     }
-
-}
-
-extension SignupController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    @objc func handlePlusPhoto() {
+    func didAddPhotos() {
         
         let imagePicker = UIImagePickerController()
         
@@ -122,21 +134,21 @@ extension SignupController: UIImagePickerControllerDelegate, UINavigationControl
         present(imagePicker, animated: true, completion: nil)
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+ 
+    
+    func didHandleInputTextChanged() {
         
-        if let editedImage = info[.editedImage] as? UIImage {
+        let isInputsValid = signupView.emailTextField.text?.count ?? 0 > 0 && signupView.passwordTextField.text?.count ?? 0 > 0 && signupView.usernameTextField.text?.count ?? 0 > 0
+        
+        if isInputsValid {
             
-            signupView.plusPhotoButton.setImage(editedImage.withRenderingMode(.alwaysOriginal), for: .normal)
+            signupView.signupButton.isEnabled = true
+            signupView.signupButton.backgroundColor = #colorLiteral(red: 0.06666666667, green: 0.5254901961, blue: 0.9294117647, alpha: 1)
             
-        } else if let originalImage = info[.originalImage] as? UIImage {
-            
-            signupView.plusPhotoButton.setImage(originalImage.withRenderingMode(.alwaysOriginal), for: .normal)
-            
+               } else {
+                signupView.signupButton.isEnabled = false
+                signupView.signupButton.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
         }
-        signupView.plusPhotoButton.layer.cornerRadius = signupView.plusPhotoButton.frame.width / 2
-        signupView.plusPhotoButton.clipsToBounds = true
-        signupView.plusPhotoButton.layer.borderColor = UIColor.gray.cgColor
-        signupView.plusPhotoButton.layer.borderWidth = 3
-        dismiss(animated: true, completion: nil)
     }
+    
 }

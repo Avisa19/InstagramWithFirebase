@@ -9,7 +9,16 @@
 import UIKit
 import Firebase
 
+protocol SignupContainerViewDelegate {
+    func didSignup()
+    func didSignin()
+    func didAddPhotos()
+    func didHandleInputTextChanged()
+}
+
 class SignupContainerView: UIView {
+    
+    var delegate: SignupContainerViewDelegate?
     
     let plusPhotoButton: UIButton = {
         let button = UIButton(type: .system)
@@ -21,7 +30,7 @@ class SignupContainerView: UIView {
         button.clipsToBounds = true
         button.layer.borderWidth = 2
         button.layer.borderColor = #colorLiteral(red: 0, green: 0.6509803922, blue: 1, alpha: 1)
-        button.addTarget(self, action: #selector(SignupController.handlePlusPhoto), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handlePlusPhoto), for: .touchUpInside)
         return button
     }()
     
@@ -32,7 +41,7 @@ class SignupContainerView: UIView {
         textField.textColor = .gray
         textField.borderStyle = .roundedRect
         textField.backgroundColor = UIColor(white: 0, alpha: 0.03)
-        textField.addTarget(self, action: #selector(SignupController.handleInputTextChanged), for: .editingChanged)
+        textField.addTarget(self, action: #selector(handleInputTextChanged), for: .editingChanged)
         return textField
     }()
     
@@ -43,7 +52,7 @@ class SignupContainerView: UIView {
         textField.textColor = .gray
         textField.borderStyle = .roundedRect
         textField.backgroundColor = UIColor(white: 0, alpha: 0.03)
-        textField.addTarget(self, action: #selector(SignupController.handleInputTextChanged), for: .editingChanged)
+        textField.addTarget(self, action: #selector(handleInputTextChanged), for: .editingChanged)
         return textField
     }()
     
@@ -55,7 +64,7 @@ class SignupContainerView: UIView {
         textField.borderStyle = .roundedRect
         textField.isSecureTextEntry = true
         textField.backgroundColor = UIColor(white: 0, alpha: 0.03)
-        textField.addTarget(self, action: #selector(SignupController.handleInputTextChanged), for: .editingChanged)
+        textField.addTarget(self, action: #selector(handleInputTextChanged), for: .editingChanged)
         return textField
     }()
     
@@ -69,7 +78,7 @@ class SignupContainerView: UIView {
         button.layer.cornerRadius = 5
         button.clipsToBounds = true
         button.layer.borderColor = #colorLiteral(red: 0, green: 0.6509803922, blue: 1, alpha: 1)
-        button.addTarget(self, action: #selector(SignupController.handleSignup), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleSignsup), for: .touchUpInside)
         button.isEnabled = true
         return button
     }()
@@ -81,7 +90,7 @@ class SignupContainerView: UIView {
              attributedText.append(NSAttributedString(string: " Sign In.", attributes: [.font: UIFont.systemFont(ofSize: 14, weight: .heavy), .foregroundColor: #colorLiteral(red: 0, green: 0.4705882353, blue: 0.8039215686, alpha: 1)]))
 
          button.setAttributedTitle(attributedText, for: .normal)
-        button.addTarget(self, action: #selector(SignupController.handleSignIn), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleSignsin), for: .touchUpInside)
              return button
          }()
     
@@ -115,6 +124,24 @@ class SignupContainerView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc fileprivate func handleSignsup() {
+        delegate?.didSignup()
+    }
+    
+    @objc fileprivate func handleSignsin() {
+        delegate?.didSignin()
+    }
+    
+    @objc fileprivate func handlePlusPhoto() {
+        
+        delegate?.didAddPhotos()
+    }
+    
+    @objc fileprivate func handleInputTextChanged() {
+        
+        delegate?.didHandleInputTextChanged()
     }
 }
 

@@ -8,19 +8,26 @@
 
 import UIKit
 
+protocol CameraContainerViewDelegate {
+    func didHandleCapturing()
+    func didHandleDismiss()
+}
+
 class CameraContainerView: UIView {
+    
+    var delegate: CameraContainerViewDelegate?
  
     let captureButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(#imageLiteral(resourceName: "circle").withRenderingMode(.alwaysOriginal), for: .normal)
-        button.addTarget(self, action: #selector(CameraController.handleCapturing), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleCapturing), for: .touchUpInside)
         return button
     }()
     
     let dismissButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(#imageLiteral(resourceName: "right").withRenderingMode(.alwaysOriginal), for: .normal)
-        button.addTarget(self, action: #selector(CameraController.handleDismiss), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleDismiss), for: .touchUpInside)
         return button
     }()
   
@@ -39,6 +46,14 @@ class CameraContainerView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc fileprivate func handleCapturing() {
+        delegate?.didHandleCapturing()
+    }
+    
+    @objc fileprivate func handleDismiss() {
+        delegate?.didHandleDismiss()
     }
     
 }

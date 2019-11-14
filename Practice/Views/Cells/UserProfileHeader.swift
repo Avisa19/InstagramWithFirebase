@@ -12,7 +12,11 @@ import Firebase
 
 class UserProfileHeader: UICollectionViewCell {
     
-    let headerView = UserProfileHeaderContainerView()
+    lazy var headerView: UserProfileHeaderContainerView = {
+       let view = UserProfileHeaderContainerView()
+        view.delegateForCell = self
+        return view
+    }()
     
     var user: User? {
         didSet {
@@ -36,47 +40,6 @@ class UserProfileHeader: UICollectionViewCell {
         guard let userId = user?.uid else { return }
         
         currentUserLoggedInId == userId ? setupEditProfileStats(userId, currentUserLoggedInId) : setupFollowButtonStats(userId, currentUserLoggedInId)
-        
-        headerView.editProfileFollowButton.addTarget(self, action: #selector(handleEditAndFollow), for: .touchUpInside)
-    }
-    
-    @objc fileprivate func handleEditAndFollow() {
-        
-        guard let currentUser = Auth.auth().currentUser?.uid else { return }
-        guard let userId = user?.uid else { return }
-        
-        let ref = Database.database().reference().child("following").child(currentUser)
-        
-        if headerView.editProfileFollowButton.titleLabel?.text == "UnFollow" {
-            // unFollow
-            ref.removeValue { (err, ref) in
-                if let err = err {
-                    print("Failed to unFollow:", err)
-                    return
-                }
-                
-                print("Successfully unFollowed user.", self.user?.username ?? "")
-                
-                self.setupFollowButton()
-            }
-            
-            
-        } else {
-            // following
-            
-            let values: [String: Any] = [userId: 1]
-            
-            ref.updateChildValues(values) { (err, ref) in
-                
-                if let err = err {
-                    print("Failed to create following user group:", err)
-                    return
-                }
-                
-                print("following users successfully saved to DB.")
-                self.setupUnfollowButton()
-            }
-        }
         
     }
     
@@ -135,4 +98,45 @@ class UserProfileHeader: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+}
+
+extension UserProfileHeader: UserProfileHeaderForCellDelegate {
+    func didHandleEditAndFollow() {
+        
+        guard let currentUser = Auth.auth().currentUser?.uid else { return }
+        guard let userId = user?.uid else { return }
+        
+        let ref = Database.database().reference().child("following").child(currentUser)
+        
+        if headerView.editProfileFollowButton.titleLabel?.text == "UnFollow" {
+            // unFollow
+            ref.removeValue { (err, ref) in
+                if let err = err {
+                    print("Failed to unFollow:", err)
+                    return
+                    }
+                    
+                    print("Successfully unFollowed user.", self.user?.username ?? "")
+                    
+                    self.setupFollowButton()
+                }
+                
+                
+             } else {
+                // following
+                
+                let values: [String: Any] = [userId: 1]
+                
+                ref.updateChildValues(values) { (err, ref) in
+                    
+                    if let err = err {
+                        print("Failed to create following user group:", err)
+                        return
+                    }
+                    
+                    print("following users successfully saved to DB.")
+                    self.setupUnfollowButton()
+                }
+        }
+    }
 }

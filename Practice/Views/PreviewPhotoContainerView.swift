@@ -8,7 +8,14 @@
 
 import UIKit
 
+protocol PreviewPhotoContainerViewDelegate {
+    func didHandleSavePhoto()
+    func didHandleCancel()
+}
+
 class PreviewPhotoContainerView: UIView {
+    
+    var delegate: PreviewPhotoContainerViewDelegate?
     
     let previewPhotoImageView: UIImageView = {
         let imageView = UIImageView()
@@ -20,14 +27,14 @@ class PreviewPhotoContainerView: UIView {
     let cancelButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(#imageLiteral(resourceName: "cancel").withRenderingMode(.alwaysOriginal), for: .normal)
-        button.addTarget(self, action: #selector(CameraController.handleCancel), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleCancel), for: .touchUpInside)
         return button
     }()
     
     let saveButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(#imageLiteral(resourceName: "save").withRenderingMode(.alwaysOriginal), for: .normal)
-        button.addTarget(self, action: #selector(CameraController.handleSavePhoto), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleSavePhoto), for: .touchUpInside)
         return button
     }()
     
@@ -82,6 +89,14 @@ class PreviewPhotoContainerView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc fileprivate func handleSavePhoto() {
+        delegate?.didHandleSavePhoto()
+    }
+    
+    @objc fileprivate func handleCancel() {
+        delegate?.didHandleCancel()
     }
     
 }

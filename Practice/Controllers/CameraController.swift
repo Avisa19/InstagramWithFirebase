@@ -12,18 +12,6 @@ import Photos
 
 extension CameraController: AVCapturePhotoCaptureDelegate {
     
-    @objc func handleCapturing() {
-        
-        let settings = AVCapturePhotoSettings()
-        
-        #if (!arch(x86_64))
-        guard let previewFormatType = settings.availablePreviewPhotoPixelFormatTypes.first else { return }
-        
-        settings.previewPhotoFormat = [kCVPixelBufferPixelFormatTypeKey as String: previewFormatType]
-        
-        output.capturePhoto(with: settings, delegate: self)
-        #endif
-    }
     
     func photoOutput(_ captureOutput: AVCapturePhotoOutput, didFinishProcessingPhoto photoSampleBuffer: CMSampleBuffer?, previewPhoto previewPhotoSampleBuffer: CMSampleBuffer?, resolvedSettings: AVCaptureResolvedPhotoSettings, bracketSettings: AVCaptureBracketedStillImageSettings?, error: Error?) {
         
@@ -41,41 +29,21 @@ extension CameraController: AVCapturePhotoCaptureDelegate {
         
     }
     
-    @objc func handleSavePhoto() {
-    
-        print("Attempting to save Photo...")
-        
-        guard let previewImage = previewContainerView.previewPhotoImageView.image else { return }
-        
-        let library = PHPhotoLibrary.shared()
-        
-        library.performChanges({
-            
-            PHAssetChangeRequest.creationRequestForAsset(from: previewImage)
-            
-        }) { (success, err) in
-            if let err = err {
-                print("Failed to save photos:", err)
-                return
-            }
-            print("Successfully saved image to library.")
-            DispatchQueue.main.async {
-                self.previewContainerView.setupSavedLabel()
-            }
-        }
-    }
-    
-    @objc func handleCancel() {
-        
-        previewContainerView.removeFromSuperview()
-    }
 }
 
 class CameraController: UIViewController {
     
-    let cameraView = CameraContainerView()
+    lazy var cameraView: CameraContainerView = {
+        let view = CameraContainerView()
+        view.delegate = self
+        return view
+    }()
     
-    let previewContainerView = PreviewPhotoContainerView()
+    lazy var previewContainerView: PreviewPhotoContainerView = {
+        let view = PreviewPhotoContainerView()
+        view.delegate = self
+        return view
+    }()
     
     let customAnimationPresentor = CustomAnimationPresentor()
     
@@ -97,12 +65,7 @@ class CameraController: UIViewController {
     override var prefersStatusBarHidden: Bool {
         return true
     }
-    
-    
-    @objc func handleDismiss() {
-        
-        dismiss(animated: true, completion: nil)
-    }
+ 
     
      let output = AVCapturePhotoOutput()
     
@@ -157,4 +120,58 @@ extension CameraController: UIViewControllerTransitioningDelegate {
     }
     
    
+}
+
+
+extension CameraController: CameraContainerViewDelegate {
+    func didHandleCapturing() {
+           
+             let settings = AVCapturePhotoSettings()
+             
+             #if (!arch(x86_64))
+             guard let previewFormatType = settings.availablePreviewPhotoPixelFormatTypes.first else { return }
+             
+             settings.previewPhotoFormat = [kCVPixelBufferPixelFormatTypeKey as String: previewFormatType]
+             
+             output.capturePhoto(with: settings, delegate: self)
+             #endif
+    }
+    
+    func didHandleDismiss() {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
+}
+
+extension CameraController: PreviewPhotoContainerViewDelegate {
+    func didHandleSavePhoto() {
+        
+        print("Attempting to save Photo...")
+        
+        guard let previewImage = previewContainerView.previewPhotoImageView.image else { return }
+        
+        let library = PHPhotoLibrary.shared()
+        
+        library.performChanges({
+            
+            PHAssetChangeRequest.creationRequestForAsset(from: previewImage)
+            
+        }) { (success, err) in
+            if let err = err {
+                print("Failed to save photos:", err)
+                return
+            }
+            print("Successfully saved image to library.")
+            DispatchQueue.main.async {
+                self.previewContainerView.setupSavedLabel()
+            }
+        }
+    }
+    
+    func didHandleCancel() {
+        previewContainerView.removeFromSuperview()
+    }
+    
+    
 }

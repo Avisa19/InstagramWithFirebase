@@ -9,7 +9,15 @@
 import UIKit
 import Firebase
 
+protocol LoginContainerViewDelegate {
+    func didHandleLogin()
+    func didHandleEditChanged()
+    func didHandleShowSignup()
+}
+
 class LoginContainerView: UIView {
+    
+    var delegate: LoginContainerViewDelegate?
     
     let logoView: UIView = {
         let view = UIView()
@@ -24,7 +32,7 @@ class LoginContainerView: UIView {
         attributedText.append(NSAttributedString(string: " Sign Up.", attributes: [.font: UIFont.systemFont(ofSize: 14, weight: .heavy), .foregroundColor: #colorLiteral(red: 0, green: 0.4705882353, blue: 0.8039215686, alpha: 1)]))
         
         button.setAttributedTitle(attributedText, for: .normal)
-        button.addTarget(self, action: #selector(LoginController.handleShowSignup), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleShowSignup), for: .touchUpInside)
         return button
     }()
     
@@ -35,7 +43,7 @@ class LoginContainerView: UIView {
         textField.textColor = .gray
         textField.borderStyle = .roundedRect
         textField.backgroundColor = UIColor(white: 0, alpha: 0.03)
-        textField.addTarget(self, action: #selector(LoginController.handleEditChanged), for: .editingChanged)
+        textField.addTarget(self, action: #selector(handleEditChanged), for: .editingChanged)
         return textField
     }()
     
@@ -47,7 +55,7 @@ class LoginContainerView: UIView {
         textField.borderStyle = .roundedRect
         textField.isSecureTextEntry = true
         textField.backgroundColor = UIColor(white: 0, alpha: 0.03)
-        textField.addTarget(self, action: #selector(LoginController.handleEditChanged), for: .editingChanged)
+        textField.addTarget(self, action: #selector(handleEditChanged), for: .editingChanged)
         return textField
     }()
     
@@ -61,7 +69,7 @@ class LoginContainerView: UIView {
         button.layer.cornerRadius = 5
         button.clipsToBounds = true
         button.layer.borderColor = #colorLiteral(red: 0, green: 0.6509803922, blue: 1, alpha: 1)
-        button.addTarget(self, action: #selector(LoginController.handleLogin), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
         button.isEnabled = true
         return button
     }()
@@ -94,6 +102,18 @@ class LoginContainerView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc fileprivate func handleLogin() {
+        delegate?.didHandleLogin()
+    }
+    
+    @objc fileprivate func handleEditChanged() {
+        delegate?.didHandleEditChanged()
+    }
+    
+    @objc fileprivate func handleShowSignup() {
+        delegate?.didHandleShowSignup()
     }
     
 }

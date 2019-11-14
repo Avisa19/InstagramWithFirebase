@@ -18,9 +18,14 @@ protocol UserProfileHeaderDelegate {
     func didChangeToGridView()
 }
 
+protocol UserProfileHeaderForCellDelegate {
+    func didHandleEditAndFollow()
+}
+
 class UserProfileHeaderContainerView: UIView {
     
     var delegate: UserProfileHeaderDelegate?
+    var delegateForCell: UserProfileHeaderForCellDelegate?
     
      let profileImageView: CustomImageView = {
            let imageView = CustomImageView()
@@ -98,6 +103,7 @@ class UserProfileHeaderContainerView: UIView {
             button.layer.borderColor = UIColor(white: 0, alpha: 0.2).cgColor
             button.layer.cornerRadius = 5
             button.clipsToBounds = true
+            button.addTarget(self, action: #selector(handleEditAndFollow), for: .touchUpInside)
             return button
         }()
     
@@ -165,6 +171,10 @@ class UserProfileHeaderContainerView: UIView {
         gridButton.tintColor = #colorLiteral(red: 0, green: 0.4745098039, blue: 0.8235294118, alpha: 1)
         listButton.tintColor = UIColor(white: 0, alpha: 0.2)
         delegate?.didChangeToGridView()
+    }
+    
+    @objc fileprivate func handleEditAndFollow() {
+        delegateForCell?.didHandleEditAndFollow()
     }
     
 }
