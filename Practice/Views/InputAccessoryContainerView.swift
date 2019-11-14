@@ -16,14 +16,15 @@ class InputAccessoryContainerView: UIView {
     var delegate: CommentInputAccessoryViewDelegate?
     
     func clearCommentTextField() {
-        textField.text = nil
+        commentTextView.text = nil
+        commentTextView.showPlaceHolderLabel()
     }
     // It's really help you to find the bug , because you make it fileprivate... very very important.
-   fileprivate let textField: UITextField = {
-        let tx = UITextField()
-        tx.placeholder = "Type in some comments"
-        tx.isUserInteractionEnabled = true
-        return tx
+    fileprivate let commentTextView: CommentInputTextView = {
+        let tv = CommentInputTextView()
+        tv.isScrollEnabled = false
+        tv.font = UIFont.systemFont(ofSize: 18)
+        return tv
     }()
     
    fileprivate let submitButton: UIButton = {
@@ -38,14 +39,20 @@ class InputAccessoryContainerView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        autoresizingMask = .flexibleHeight
+        
         backgroundColor = .white
-        addSubview(textField)
-        textField.fillSuperview(padding: .init(top: 0, left: 8, bottom: 0, right: 0))
+        addSubview(commentTextView)
+        commentTextView.anchor(top: topAnchor, leading: leadingAnchor, bottom: safeAreaLayoutGuide.bottomAnchor, trailing: nil, padding: .init(top: 0, left: 8, bottom: 0, right: 0))
         addSubview(submitButton)
-        submitButton.anchor(top: topAnchor, leading: nil, bottom: bottomAnchor, trailing: trailingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 8))
+        submitButton.anchor(top: topAnchor, leading: commentTextView.trailingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 8), size: .init(width: 50, height: 50))
         
         
         setupLineSeperatorView()
+    }
+    
+    override var intrinsicContentSize: CGSize {
+        return .zero
     }
     
     fileprivate func setupLineSeperatorView() {
@@ -62,7 +69,7 @@ class InputAccessoryContainerView: UIView {
     
     @objc func submit() {
         
-        guard let commentText = textField.text else { return }
+        guard let commentText = commentTextView.text else { return }
         
         delegate?.didSubmit(for: commentText)
     }

@@ -29,10 +29,10 @@ class CommentCell: UICollectionViewCell {
         let attributedText = NSMutableAttributedString(string: username, attributes: [.font: UIFont.systemFont(ofSize: 14, weight: .medium), .foregroundColor: UIColor.black])
         attributedText.append(NSAttributedString(string: "  \(commentText)", attributes: [.font: UIFont.systemFont(ofSize: 14, weight: .light)]))
         
-        commentTextView.attributedText = attributedText
+        textView.attributedText = attributedText
     }
     
-    let commentTextView: UITextView = {
+    let textView: UITextView = {
         let textView = UITextView()
         textView.isScrollEnabled = false
         return textView
@@ -59,10 +59,10 @@ class CommentCell: UICollectionViewCell {
         
         addSubview(profileImageView)
         profileImageView.anchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: nil, padding: .init(top: 4, left: 4, bottom: 4, right: 0), size: .init(width: 42, height: 42))
-        addSubview(commentTextView)
-        commentTextView.anchor(top: topAnchor, leading: profileImageView.trailingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, padding: .init(top: 4, left: 4, bottom: 4, right: 4))
+        addSubview(textView)
+        textView.anchor(top: topAnchor, leading: profileImageView.trailingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, padding: .init(top: 4, left: 4, bottom: 4, right: 4))
         addSubview(dividerView)
-        dividerView.anchor(top: commentTextView.bottomAnchor, leading: profileImageView.trailingAnchor, bottom: nil, trailing: commentTextView.trailingAnchor, padding: .zero, size: .init(width: 0, height: 0.5))
+        dividerView.anchor(top: textView.bottomAnchor, leading: profileImageView.trailingAnchor, bottom: nil, trailing: textView.trailingAnchor, padding: .zero, size: .init(width: 0, height: 0.5))
     }
     
     required init?(coder: NSCoder) {
