@@ -1,3 +1,3 @@
 # InstagramWithFirebase
 
-Exactly like instagram with Exact UI and connect to Firebase Database.
+Exactly like instagram with Exact UI and connect to `Google Firebase Database`.
